@@ -1,3 +1,5 @@
+--Pastebin: 3a53ZgRE
+
 function download_from_github(filpath)
     local url = "https://raw.githubusercontent.com/noahkamara/CC/master/" .. filpath 
 
