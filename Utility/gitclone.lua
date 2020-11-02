@@ -1,15 +1,15 @@
 function download_from_github(filpath)
-local url = "https://raw.githubusercontent.com/noahkamara/CC/master/" .. filpath 
+    local url = "https://raw.githubusercontent.com/noahkamara/CC/master/" .. filpath 
 
--- URL REQUEST
-local response = http.get(url)
-local content = response.readAll()
-response.close()
+    -- URL REQUEST
+    local response = http.get(url)
+    local content = response.readAll()
+    response.close()
 
--- WRITE TO FILE
-local file = fs.open(filpath, "w")
-file.write(content)
-file.close()
+    -- WRITE TO FILE
+    local file = fs.open(filpath, "w")
+    file.write(content)
+    file.close()
 end
 
 
