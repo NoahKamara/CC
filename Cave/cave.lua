@@ -1,4 +1,15 @@
 
+function refuel()
+    for i=1,16 do
+        local data = turtle.getItemDetail(i)
+        if data and string.match(data['name'], "coal") then
+            turtle.select(i)
+            turtle.refuel(15)
+            return true
+        end
+    end
+    return false
+end
 
 local function walk()
     local success = false
@@ -37,7 +48,12 @@ function dig(hoehe, breite, tiefe)
         for h = 1, hoehe do
             for b = 1, breite do
                 walk()
-            end      
+                fuellevel = turtle.getFuelLevel()
+                if fuellevel < 10 then
+                    refuel()
+                 end
+            end
+            
             walkup()
             turtle.turnLeft()
             turtle.turnLeft()
