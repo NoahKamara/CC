@@ -57,10 +57,11 @@ function dig(hoehe, breite, tiefe)
                     refuel()
                  end
             end
-            
-            walkup()
             turtle.turnLeft()
             turtle.turnLeft()
+            if h < hoehe then
+                walkup()
+            end
         end
         for x = 1, hoehe do
             walkdown()
