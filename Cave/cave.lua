@@ -37,6 +37,10 @@ end
 
 function dig(hoehe, breite, tiefe)
     -- get to startposition
+    fuellevel = turtle.getFuelLevel()
+    if fuellevel < 20 then
+        refuel()
+    end
     turtle.turnRight()
     for i = 1, math.floor(breite/2) do
         walk()
