@@ -1,4 +1,4 @@
-os.loadAPI("Schacht.lua")
+os.loadAPI("stripmine/Schacht.lua")
 
 local function walk()
     local success = false
