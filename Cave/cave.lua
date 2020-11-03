@@ -35,7 +35,77 @@ local function walkdown()
     end
 end
 
-function dig(hoehe, breite, tiefe)
+function find_item(item_name)
+    '''findet ersten Slot des strings "item_name" und waehlt ihn aus
+    '''
+    for i=1,16 do
+        local data = turtle.getItemDetail(i)
+        if data and string.match(data['name'], item_name) then
+            turtle.select(i)
+            return i
+            break
+        end
+        return false
+    end
+end
+
+function fix_ceiling(decke_rep)
+    if decke_rep then
+        if not turtle.detectUp() then
+            find_item("cobble")
+            for i=1, 2 do 
+                walkup()
+            end
+            for i=1, 2 do 
+                turtle.placeUp()
+                walkdown()
+            end
+            turtle.placeUp()
+            turtle.select(1)
+        end
+    end
+end
+
+function fix_wall(weande_rep)
+    if weande_rep then
+        turtle.turnLeft()
+        turtle.turnLeft()
+        if not turtle.detect() then
+            find_item("cobble")
+            turtle.place()
+        end
+        turtle.select(1)
+        turtle.turnLeft()
+        turtle.turnLeft()
+    end
+end
+
+function find_and_fix_front_or_back_wall(actuelle_hoehe, actuelle_tiefe, max_tiefe)
+    if actuelle_tiefe == 1  then
+        if  actuelle_hoehe % 2 == 0 then
+            turtle.turnLeft()
+            fix_wall()
+            turtle.turnLeft()
+        else if actuelle_hoehe % 2 != 0 then
+            turtle.turnLeft()
+            fix_wall()
+            turtle.turnLeft()
+        end
+    else if actuelle_tiefe == max_tiefe then
+        if  actuelle_hoehe % 2 == 0  and max_tiefe % 2 != 0 or actuelle_hoehe % 2 != 0  and max_tiefe % 2 == 0   then
+            turtle.turnRight()
+            fix_wall()
+            turtle.turnLeft()
+        else if actuelle_hoehe % 2 != 0  and max_tiefe % 2 != 0 or actuelle_hoehe % 2 == 0  and max_tiefe % 2 == 0   then
+            turtle.turnLeft()
+            fix_wall()
+            turtle.turnRight()
+        end
+    end 
+end
+
+
+function dig(hoehe, breite, tief, weande_rep, decke_rep)
     -- get to startingposition
     fuellevel = turtle.getFuelLevel()
     if fuellevel < 20 then
@@ -52,19 +122,25 @@ function dig(hoehe, breite, tiefe)
     turtle.turnLeft()
     --start
     for t=1, tiefe do
+        fix_wall()
         for h = 1, hoehe do
             for b = 1, breite do
+                find_and_fix_front_or_back_wall(h, t, tiefe)
+                fix_ceiling()
                 walk()
                 fuellevel = turtle.getFuelLevel()
                 if fuellevel < 10 then
                     refuel()
                  end
             end
+            find_and_fix_front_or_back_wall(h, t, tiefe)
+            fix_ceiling()
             turtle.turnLeft()
             turtle.turnLeft()
             if h < hoehe then
                 walkdown()
             end
+            fix_wall()
         end
         
         for x = 1, hoehe do
@@ -82,6 +158,8 @@ function dig(hoehe, breite, tiefe)
             end
         end
     end
+    -- back to starting position
+    --fehlt
 end
 
 print("hoehe: ")
@@ -92,5 +170,21 @@ breite = tonumber(read())-1
 
 print("tiefe: ")
 tiefe = tonumber(read())-1
+
+print("Wenn wände gesetzt oder ergänzt werden sollen enter sonst 1":)
+waende = tonumber(read())
+if waende == 1 then
+    weande_rep = false
+else
+    weande_rep = true
+end
+
+print("Wenn die Decke gesetzt oder ergänzt werden sollen enter sonst 1":)
+decke = tonumber(read())
+if decke == 1 then
+    decke_rep = false
+else
+    decke_rep = true
+end
 
 dig(hoehe, breite, tiefe)
