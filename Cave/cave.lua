@@ -81,15 +81,15 @@ end
 
 function find_and_fix_front_or_back_wall(actuelle_hoehe, actuelle_tiefe, max_tiefe, weande_rep)
     if actuelle_tiefe == 1  then
-        if  actuelle_hoehe % 2 ~= 0 then
-            turtle.turnLeft()
-            fix_wall(weande_rep)
-            turtle.turnRight()
-        elseif actuelle_hoehe % 2 == 0 then
-            turtle.turnRight()
-            fix_wall(weande_rep)
-            turtle.turnLeft()
-        end
+        -- if  actuelle_hoehe % 2 ~= 0 then
+        --     turtle.turnRight()
+        --     fix_wall(weande_rep)
+        --     turtle.turnLeft()
+        -- elseif actuelle_hoehe % 2 == 0 then
+        --     turtle.turnRight()
+        --     fix_wall(weande_rep)
+        --     turtle.turnLeft()
+        -- end
     elseif actuelle_tiefe == max_tiefe then
         if  (actuelle_hoehe % 2 == 0  and max_tiefe % 2 ~= 0) or (actuelle_hoehe % 2 ~= 0  and max_tiefe % 2 == 0)   then
             turtle.turnRight()
@@ -134,12 +134,12 @@ function dig(hoehe, breite, tief, weande_rep, decke_rep)
                 if fuellevel < 10 then
                     refuel()
                  end
-            end
-            fix_wall(weande_rep)
+            end    
             find_and_fix_front_or_back_wall(h, t, tiefe, weande_rep)
             if h == 1 then fix_ceiling(decke_rep) end
             turtle.turnLeft()
             turtle.turnLeft()
+            fix_wall(weande_rep)
             if h < hoehe then
                 walkdown()
             end
