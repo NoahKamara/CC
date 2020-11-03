@@ -43,7 +43,6 @@ function find_item(item_name)
         if data and string.match(data['name'], item_name) then
             turtle.select(i)
             return i
-            break
         end
         return false
     end
