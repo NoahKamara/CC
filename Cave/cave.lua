@@ -50,7 +50,7 @@ function dig(hoehe, breite, tiefe)
     --start
     for t=1, tiefe do
         for h = 1, hoehe do
-            for b = 1, breite do
+            for b = 2, breite do
                 walk()
                 fuellevel = turtle.getFuelLevel()
                 if fuellevel < 10 then
