@@ -149,7 +149,7 @@ function dig(hoehe, breite, tief, weande_rep, decke_rep)
             walkup()
         end
         if t < tiefe then
-            if t %2 ~= 2 and h %2 ~= 2  then
+            if t %2 ~= 0 and h %2 ~= 0  then
                 turtle.turnLeft()
                 walk()
                 turtle.turnRight()
