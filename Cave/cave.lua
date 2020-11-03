@@ -123,7 +123,7 @@ function dig(hoehe, breite, tief, weande_rep, decke_rep)
     for t=1, tiefe do
         print("schleife tiefe")
         fix_wall(weande_rep)
-        for h = 1, hoehe do
+        for h = 1, hoehe+1 do
             print("schleife hoehe")
             for b = 1, breite do
                 print("schleife breite")
@@ -139,9 +139,9 @@ function dig(hoehe, breite, tief, weande_rep, decke_rep)
             --fix_ceiling(decke_rep)
             turtle.turnLeft()
             turtle.turnLeft()
-            --if h < hoehe then
+            if h < hoehe then
                 walkdown()
-            --end
+            end
             --fix_wall(weande_rep)
         end
         
