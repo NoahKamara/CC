@@ -124,11 +124,10 @@ function dig(hoehe, breite, tief, weande_rep, decke_rep)
         print("schleife tiefe")
         fix_wall(weande_rep)
         for h = 1, hoehe do
-            fix_wall(weande_rep)
             print("schleife hoehe")
             for b = 1, breite do
                 print("schleife breite")
-                --find_and_fix_front_or_back_wall(h, t, tiefe, weande_rep)
+                find_and_fix_front_or_back_wall(h, t, tiefe, weande_rep)
                 if h == 1 then fix_ceiling(decke_rep) end
                 walk()
                 fuellevel = turtle.getFuelLevel()
@@ -136,7 +135,8 @@ function dig(hoehe, breite, tief, weande_rep, decke_rep)
                     refuel()
                  end
             end
-            --find_and_fix_front_or_back_wall(h, t, tiefe, weande_rep)
+            fix_wall(weande_rep)
+            find_and_fix_front_or_back_wall(h, t, tiefe, weande_rep)
             if h == 1 then fix_ceiling(decke_rep) end
             turtle.turnLeft()
             turtle.turnLeft()
