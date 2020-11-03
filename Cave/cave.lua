@@ -170,7 +170,7 @@ breite = tonumber(read())-1
 print("tiefe: ")
 tiefe = tonumber(read())-1
 
-print("Wenn wände gesetzt oder ergänzt werden sollen enter sonst 1":)
+print("Wenn wände gesetzt oder ergänzt werden sollen enter sonst 1:")
 waende = tonumber(read())
 if waende == 1 then
     weande_rep = false
@@ -178,7 +178,7 @@ else
     weande_rep = true
 end
 
-print("Wenn die Decke gesetzt oder ergänzt werden sollen enter sonst 1":)
+print("Wenn die Decke gesetzt oder ergänzt werden sollen enter sonst 1:")
 decke = tonumber(read())
 if decke == 1 then
     decke_rep = false
