@@ -79,25 +79,25 @@ function fix_wall(weande_rep)
     end
 end
 
-function find_and_fix_front_or_back_wall(actuelle_hoehe, actuelle_tiefe, max_tiefe)
+function find_and_fix_front_or_back_wall(actuelle_hoehe, actuelle_tiefe, max_tiefe, weande_rep)
     if actuelle_tiefe == 1  then
         if  actuelle_hoehe % 2 ~= 0 then
             turtle.turnLeft()
-            fix_wall()
+            fix_wall(weande_rep)
             turtle.turnLeft()
         elseif actuelle_hoehe % 2 == 0 then
             turtle.turnLeft()
-            fix_wall()
+            fix_wall(weande_rep)
             turtle.turnLeft()
         end
     elseif actuelle_tiefe == max_tiefe then
         if  actuelle_hoehe % 2 == 0  and max_tiefe % 2 ~= 0 or actuelle_hoehe % 2 ~= 0  and max_tiefe % 2 == 0   then
             turtle.turnRight()
-            fix_wall()
+            fix_wall(weande_rep)
             turtle.turnLeft()
         elseif actuelle_hoehe % 2 ~= 0  and max_tiefe % 2 ~= 0 or actuelle_hoehe % 2 == 0  and max_tiefe % 2 == 0   then
             turtle.turnLeft()
-            fix_wall()
+            fix_wall(weande_rep)
             turtle.turnRight()
         end
     end 
@@ -121,25 +121,25 @@ function dig(hoehe, breite, tief, weande_rep, decke_rep)
     turtle.turnLeft()
     --start
     for t=1, tiefe do
-        fix_wall()
+        fix_wall(weande_rep)
         for h = 1, hoehe do
             for b = 1, breite do
-                find_and_fix_front_or_back_wall(h, t, tiefe)
-                fix_ceiling()
+                find_and_fix_front_or_back_wall(h, t, tiefe, weande_rep)
+                fix_ceiling(decke_rep)
                 walk()
                 fuellevel = turtle.getFuelLevel()
                 if fuellevel < 10 then
                     refuel()
                  end
             end
-            find_and_fix_front_or_back_wall(h, t, tiefe)
-            fix_ceiling()
+            find_and_fix_front_or_back_wall(h, t, tiefe, weande_rep)
+            fix_ceiling(decke_rep)
             turtle.turnLeft()
             turtle.turnLeft()
             if h < hoehe then
                 walkdown()
             end
-            fix_wall()
+            fix_wall(weande_rep)
         end
         
         for x = 1, hoehe do
@@ -186,4 +186,4 @@ else
     decke_rep = true
 end
 
-dig(hoehe, breite, tiefe)
+dig(hoehe, breite, tiefe, weande_rep, decke_rep)
