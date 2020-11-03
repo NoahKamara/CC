@@ -91,11 +91,11 @@ function find_and_fix_front_or_back_wall(actuelle_hoehe, actuelle_tiefe, max_tie
             turtle.turnLeft()
         end
     elseif actuelle_tiefe == max_tiefe then
-        if  actuelle_hoehe % 2 == 0  and max_tiefe % 2 ~= 0 or actuelle_hoehe % 2 ~= 0  and max_tiefe % 2 == 0   then
+        if  (actuelle_hoehe % 2 == 0  and max_tiefe % 2 ~= 0) or (actuelle_hoehe % 2 ~= 0  and max_tiefe % 2 == 0)   then
             turtle.turnRight()
             fix_wall(weande_rep)
             turtle.turnLeft()
-        elseif actuelle_hoehe % 2 ~= 0  and max_tiefe % 2 ~= 0 or actuelle_hoehe % 2 == 0  and max_tiefe % 2 == 0   then
+        elseif (actuelle_hoehe % 2 ~= 0  and max_tiefe % 2 ~= 0) or (actuelle_hoehe % 2 == 0  and max_tiefe % 2 == 0)   then
             turtle.turnLeft()
             fix_wall(weande_rep)
             turtle.turnRight()
@@ -128,7 +128,7 @@ function dig(hoehe, breite, tief, weande_rep, decke_rep)
             for b = 1, breite do
                 print("schleife breite")
                 --find_and_fix_front_or_back_wall(h, t, tiefe, weande_rep)
-                --fix_ceiling(decke_rep)
+                if h == hoehe then fix_ceiling(decke_rep) end
                 walk()
                 fuellevel = turtle.getFuelLevel()
                 if fuellevel < 10 then
@@ -136,7 +136,7 @@ function dig(hoehe, breite, tief, weande_rep, decke_rep)
                  end
             end
             --find_and_fix_front_or_back_wall(h, t, tiefe, weande_rep)
-            --fix_ceiling(decke_rep)
+            if h == hoehe then fix_ceiling(decke_rep) end
             turtle.turnLeft()
             turtle.turnLeft()
             if h < hoehe then
