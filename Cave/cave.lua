@@ -145,7 +145,7 @@ function dig(hoehe, breite, tief, weande_rep, decke_rep)
             fix_wall(weande_rep)
         end
         
-        for x = 1, hoehe do
+        for x = 2, hoehe do
             walkup()
         end
         if t < tiefe then
@@ -165,13 +165,13 @@ function dig(hoehe, breite, tief, weande_rep, decke_rep)
 end
 
 print("hoehe: ")
-hoehe = tonumber(read())-1
+hoehe = tonumber(read())
 
 print("breite: ")
 breite = tonumber(read())-1
 
 print("tiefe: ")
-tiefe = tonumber(read())-1
+tiefe = tonumber(read())
 
 print("Wenn wände gesetzt oder ergänzt werden sollen enter sonst 1:")
 waende = tonumber(read())
