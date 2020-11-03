@@ -36,7 +36,7 @@ local function walkdown()
 end
 
 function dig(hoehe, breite, tiefe)
-    -- get to startposition
+    -- get to startingposition
     fuellevel = turtle.getFuelLevel()
     if fuellevel < 20 then
         refuel()
@@ -45,12 +45,15 @@ function dig(hoehe, breite, tiefe)
     for i = 1, math.floor(breite/2) do
         walk()
     end
+    for i = 1, hoehe do
+        walkup()
+    end
     turtle.turnLeft()
     turtle.turnLeft()
     --start
     for t=1, tiefe do
         for h = 1, hoehe do
-            for b = 2, breite do
+            for b = 1, breite do
                 walk()
                 fuellevel = turtle.getFuelLevel()
                 if fuellevel < 10 then
@@ -60,28 +63,34 @@ function dig(hoehe, breite, tiefe)
             turtle.turnLeft()
             turtle.turnLeft()
             if h < hoehe then
-                walkup()
+                walkdown()
             end
         end
+        
         for x = 1, hoehe do
-            walkdown()
+            walkup()
         end
         if t < tiefe then
-            turtle.turnRight()
-            walk()
-            turtle.turnLeft()
+            if t %2 != 2 and h %2 != 2  then
+                turtle.turnLeft()
+                walk()
+                turtle.turnRight()
+            else
+                turtle.turnRight()
+                walk()
+                turtle.turnLeft()
+            end
         end
     end
-
 end
 
 print("hoehe: ")
-hoehe = tonumber(read())
+hoehe = tonumber(read())-1
 
 print("breite: ")
-breite = tonumber(read())
+breite = tonumber(read())-1
 
 print("tiefe: ")
-tiefe = tonumber(read())
+tiefe = tonumber(read())-1
 
 dig(hoehe, breite, tiefe)
