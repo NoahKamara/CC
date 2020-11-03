@@ -36,8 +36,8 @@ local function walkdown()
 end
 
 function find_item(item_name)
-    '''findet ersten Slot des strings "item_name" und waehlt ihn aus
-    '''
+    -- findet ersten Slot des strings "item_name" und waehlt ihn aus
+
     for i=1,16 do
         local data = turtle.getItemDetail(i)
         if data and string.match(data['name'], item_name) then
