@@ -85,17 +85,17 @@ function find_and_fix_front_or_back_wall(actuelle_hoehe, actuelle_tiefe, max_tie
             turtle.turnLeft()
             fix_wall()
             turtle.turnLeft()
-        else if actuelle_hoehe % 2 == 0 then
+        elseif actuelle_hoehe % 2 == 0 then
             turtle.turnLeft()
             fix_wall()
             turtle.turnLeft()
         end
-    else if actuelle_tiefe == max_tiefe then
+    elseif actuelle_tiefe == max_tiefe then
         if  actuelle_hoehe % 2 == 0  and max_tiefe % 2 ~= 0 or actuelle_hoehe % 2 ~= 0  and max_tiefe % 2 == 0   then
             turtle.turnRight()
             fix_wall()
             turtle.turnLeft()
-        else if actuelle_hoehe % 2 ~= 0  and max_tiefe % 2 ~= 0 or actuelle_hoehe % 2 == 0  and max_tiefe % 2 == 0   then
+        elseif actuelle_hoehe % 2 ~= 0  and max_tiefe % 2 ~= 0 or actuelle_hoehe % 2 == 0  and max_tiefe % 2 == 0   then
             turtle.turnLeft()
             fix_wall()
             turtle.turnRight()
