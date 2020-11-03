@@ -40,7 +40,7 @@ function find_item(item_name)
 
     for i=1,16 do
         local data = turtle.getItemDetail(i)
-        if data and string.match(data['name'], item_name) then
+        if data and string.match(data['name'], item_name) == item_name then
             turtle.select(i)
             return i
         end
@@ -124,6 +124,7 @@ function dig(hoehe, breite, tief, weande_rep, decke_rep)
         print("schleife tiefe")
         fix_wall(weande_rep)
         for h = 1, hoehe do
+            fix_wall(weande_rep)
             print("schleife hoehe")
             for b = 1, breite do
                 print("schleife breite")
@@ -136,7 +137,7 @@ function dig(hoehe, breite, tief, weande_rep, decke_rep)
                  end
             end
             --find_and_fix_front_or_back_wall(h, t, tiefe, weande_rep)
-            if h == hoehe then fix_ceiling(decke_rep) end
+            if h == 1 then fix_ceiling(decke_rep) end
             turtle.turnLeft()
             turtle.turnLeft()
             if h < hoehe then
