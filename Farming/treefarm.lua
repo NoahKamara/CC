@@ -148,7 +148,7 @@ end
 
 walk()
 turtle.turnLeft()
-walk(anzahl_baume_quer*abstand_zw_baumen-1)
+walk((anzahl_baume_quer-1)*abstand_zw_baumen)
 turtle.turnLeft()
 
     
