@@ -44,7 +44,7 @@ local function checkAndGo()
         turtle.digDown()
         plantSeed()
     end
-    walk()
+    turtle.forward()
 end
 
 
