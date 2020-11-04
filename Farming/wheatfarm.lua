@@ -84,7 +84,7 @@ end
 local function getFieldSize()
     if fs.exists("farm.cfg") then
         local file = fs.open("farm.cfg", "r")
-        local cfg = textutils.unserialise(file.read())
+        local cfg = textutils.unserialise(file.readAll())
         if cfg then
             return tonumber(cfg.size)
         end
