@@ -20,4 +20,13 @@ function Utility.split(pString, pPattern)
     return Table
 end
 
+function Utility.contains(table, item)
+   for i, v in pairs(table) do 
+       if i == item then
+           return true
+       end
+   end
+   return false
+end
+
 return Utility

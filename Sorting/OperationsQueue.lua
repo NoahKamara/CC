@@ -35,6 +35,23 @@ function OperationsQueue.add(operation)
     file.close()
 end
 
+-- Adds the operation to the end of the queue
+-- operation (str): Operation
+function OperationsQueue.addPriority(operation)
+    -- READ OPERATION
+    local file = fs.open(OperationsQueue.location, "r")
+    local content = file.readAll()
+    local queue = Utility.split(content, "\n")
+
+    -- WRITE NEW
+    file = fs.open(OperationsQueue.location, "w")
+    file.writeLine(operation)
+    for i, v in pairs(queue) do
+        file.writeLine(v)
+    end
+    file.close()
+end
+
 
 -- Pops the operation at the front of the queue
 function OperationsQueue.pop()
