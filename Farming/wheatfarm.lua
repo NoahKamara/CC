@@ -35,11 +35,11 @@ local function checkAndGo()
     local success, data = turtle.inspectDown()
     if success then
         if data["state"]["age"] == 7 then
-            turtle.digDown("right")
+            turtle.digDown()
             plantSeed()
         end
     else
-        turtle.digDown("left")
+        turtle.digDown()
         plantSeed()
     end
     walk()
