@@ -2,7 +2,7 @@ local function walk(length)
     if length == nil then
         length = 1
     end
-    for i, lenght do
+    for i, length do
         local success = false
         while not success do
             fuellevel = turtle.getFuelLevel()
@@ -16,7 +16,7 @@ local function walk(length)
 end
 
 function refuel()
-    for i=1,16 do
+    for i=1, 16 do
         local data = turtle.getItemDetail(i)
         if data and string.match(data['name'], "coal") then
             turtle.select(i)
@@ -30,7 +30,7 @@ end
 function find_item(item_name)
     -- findet ersten Slot des strings "item_name" und waehlt ihn aus
 
-    for i=1,16 do
+    for i=1, 16 do
         local data = turtle.getItemDetail(i)
         if data and string.match(data['name'], item_name) == item_name then
             turtle.select(i)
@@ -73,7 +73,7 @@ local function chop_tree()
         turtle.digUp()
         turtle.up()
         y, data = turtle.inspectUp()
-        h += 1
+        h = h + 1
     until  string.match(data.name, wood) ~= wood
     for i, h do
         turtle.down()
@@ -94,9 +94,9 @@ local function cut_leaves()
     end
 end
 
-anzahl_baume_quer =
-anzahl_baume_tiefe =
-abstand_zw_baumen = --inclusive eigner stamm
+anzahl_baume_quer = 4
+anzahl_baume_tiefe = 4
+abstand_zw_baumen = 5 --inclusive eigner stamm
 
 if anzahl_baume_tiefe % 2 == 0 then
     walk_tree_back == true
