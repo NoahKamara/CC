@@ -1,5 +1,5 @@
 local function walk(length)
-    if length == nil
+    if length == nil then
         length = 1
     end
     for i, lenght do
@@ -102,7 +102,6 @@ if anzahl_baume_tiefe % 2 == 0 then
     walk_tree_back == true
 end
 
-
 for q, anzahl_baume_quer-1 do
     for t, anzahl_baume_tiefe-1*abstand_zw_baumen do
         walk_tree()
@@ -126,11 +125,14 @@ if walk_tree_back then
     turtle.turnLeft()
     walk()
     turtle.turnLeft()
-    walk((anzahl_baume_tiefe-1)*abstand_zw_baumen+1)
+    walk((anzahl_baume_tiefe-1)*abstand_zw_baumen)
     turtle.turnLeft()
     walk()
+    turtle.turnRight()
 end
 
+walk()
+turtle.turnLeft()
 walk(anzahl_baume_breite*abstand_zw_baumen-1)
 turtle.turnLeft()
 walk()
