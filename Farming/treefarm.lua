@@ -33,7 +33,7 @@ function find_item(item_name)
 
     for i=1, 16 do
         local data = turtle.getItemDetail(i)
-        if string.match(data.name, item_name)then
+        if data and string.match(data["name"], item_name)then
             turtle.select(i)
             return i
         end
