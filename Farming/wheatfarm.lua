@@ -13,7 +13,8 @@ end
 
 local function walk()
     local success = turtle.forward()
-    while success do
+    while not success do
+        print("CANT MOVE FORWARD")
         success = turtle.forward()
     end
 end
