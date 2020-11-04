@@ -69,7 +69,7 @@ local function chop_tree()
         turtle.up()
         y, data = turtle.inspectUp()
         h = h + 1
-    until  string.match(data.name, wood) ~= wood
+    until  string.match(data.name, "wood") ~= "wood"
     for i =1, h do
         turtle.down()
     end
