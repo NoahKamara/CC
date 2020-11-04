@@ -52,7 +52,7 @@ local function walk_tree_tree()
     if success then 
         turtle.dig()
         turtle.forward()
-        if  string.match(data.name, wood) == wood then
+        if  string.match(data.name, "log") == "log" then
             chop_tree()
             turtle.digDown()
             find_item("sapling")
