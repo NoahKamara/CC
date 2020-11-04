@@ -45,14 +45,12 @@ end
 
 local function cut_leaves()
     for i = 1 , 4 do
-        turtle.dig()
-        turtle.forward()
+        walk()
         for i = 1, 4 do
             turtle.dig()
             turtle.turnRight()
         end
-        turtle.dig()
-        turtle.back()
+        walk()
         turtle.turnRight()
     end
 end
@@ -133,6 +131,7 @@ for q = 1, anzahl_baume_quer-1 do
 end
 
 if walk_tree_back then
+    print("walking back")
     turtle.turnLeft()
     walk()
     turtle.turnLeft()
@@ -142,10 +141,10 @@ if walk_tree_back then
     turtle.turnRight()
 end
 
-walk()
-turtle.turnLeft()
-walk(anzahl_baume_quer*abstand_zw_baumen-1)
-turtle.turnLeft()
+-- walk()
+-- turtle.turnLeft()
+-- walk(anzahl_baume_quer*abstand_zw_baumen-1)
+-- turtle.turnLeft()
 
     
 
