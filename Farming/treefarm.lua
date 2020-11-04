@@ -73,7 +73,7 @@ local function chop_tree()
             d = "sed"
         end
         h = h + 1
-    until  string.match(d, "log")
+    until not string.match(d, "log")
     for i =1, h do
         turtle.down()
     end
@@ -113,7 +113,7 @@ end
 walk_tree()
 
 for q = 1, anzahl_baume_quer-1 do
-    for t = 1 , anzahl_baume_tiefe-1*abstand_zw_baumen do
+    for t = 1 , ((anzahl_baume_tiefe-1)*abstand_zw_baumen) do
         walk_tree()
     end
     if q %2 ~= 0  then
@@ -143,7 +143,7 @@ end
 
 walk()
 turtle.turnLeft()
-walk(anzahl_baume_breite*abstand_zw_baumen-1)
+walk(anzahl_baume_quer*abstand_zw_baumen-1)
 turtle.turnLeft()
 
     
