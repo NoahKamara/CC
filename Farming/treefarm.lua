@@ -33,7 +33,7 @@ function find_item(item_name)
 
     for i=1, 16 do
         local data = turtle.getItemDetail(i)
-        if string.match(data.name, item_name) == item_name then
+        if string.match(data.name, item_name)then
             turtle.select(i)
             return i
         end
@@ -72,7 +72,7 @@ local function chop_tree()
             data ="sed"
         end
         h = h + 1
-    until  string.match(data.name, "log") ~= "log"
+    until  string.match(data.name, "log")
     for i =1, h do
         turtle.down()
     end
