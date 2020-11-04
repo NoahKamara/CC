@@ -94,6 +94,7 @@ local function walk_tree()
             turtle.digDown()
             find_item("sapling")
             turtle.placeDown()
+            turtle.select(1)
         end
     else 
         turtle.forward()
