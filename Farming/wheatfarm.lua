@@ -70,6 +70,13 @@ local function run(size)
             end
         end
     end
+    if (x % 2 == 1) then
+        turtle.turnRight()
+        turtle.turnRight()
+        for y=1,size-1 do
+            walk()
+        end
+    end
     turtle.turnRight()
 
     for y=1, size-1 do
