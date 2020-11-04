@@ -37,8 +37,9 @@ function find_item(item_name)
             turtle.select(i)
             return i
         end
-        return false
+        
     end
+    return false
 end
 
 
