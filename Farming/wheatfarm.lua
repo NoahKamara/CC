@@ -1,4 +1,3 @@
-
 local function refuel()
     for i=1,16 do
         local data = turtle.getItemDetail(i)
@@ -113,5 +112,5 @@ while true do
     print("CHECKING CROPS")
     run(size)
     print("SLEEPING (60s)")
-    os.sleep(60)
+    os.sleep(60*13)
 end
