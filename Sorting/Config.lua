@@ -5,7 +5,7 @@ local Config = {}
 -- filepath (str): path to config file
 function Config.load(filepath)
     if not fs.exists(filepath) then
-        return nil
+        return {}
     end
     local file = fs.open(filepath, "r")
     local content = file.readAll()

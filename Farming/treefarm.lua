@@ -45,13 +45,11 @@ end
 
 local function cut_leaves()
     for i = 1 , 4 do
-        turtle.dig()
-        turtle.forward()
+        walk()
         for i = 1, 4 do
             turtle.dig()
             turtle.turnRight()
         end
-        turtle.dig()
         turtle.back()
         turtle.turnRight()
     end
@@ -96,6 +94,7 @@ local function walk_tree()
             turtle.digDown()
             find_item("sapling")
             turtle.placeDown()
+            turtle.select(1)
         end
     else 
         turtle.forward()
@@ -104,35 +103,40 @@ end
 
 
 anzahl_baume_quer = 4
-anzahl_baume_tiefe = 4
+anzahl_baume_tiefe = 5
 abstand_zw_baumen = 5 --inclusive eigner stamm
 
-if anzahl_baume_tiefe % 2 ~= 0 then
+if anzahl_baume_quer % 2 ~= 0 then
     walk_tree_back = true
+else
+    walk_tree_back = false
 end
 
 walk_tree()
 
-for q = 1, anzahl_baume_quer-1 do
+for q = 1, anzahl_baume_quer do
     for t = 1 , ((anzahl_baume_tiefe-1)*abstand_zw_baumen) do
         walk_tree()
     end
-    if q %2 ~= 0  then
-        turtle.turnLeft()
-        for a=1, abstand_zw_baumen do
-            walk_tree()
+    if q < anzahl_baume_quer then
+        if q %2 ~= 0  then
+            turtle.turnLeft()
+            for a=1, abstand_zw_baumen do
+                walk_tree()
+            end
+            turtle.turnLeft()
+        else
+            turtle.turnRight()
+            for a =1 , abstand_zw_baumen do
+                walk_tree()
+            end
+            turtle.turnRight()
         end
-        turtle.turnLeft()
-    else
-        turtle.turnRight()
-        for a =1 , abstand_zw_baumen do
-            walk_tree()
-        end
-        turtle.turnRight()
     end
 end
 
 if walk_tree_back then
+    print("walking back")
     turtle.turnLeft()
     walk()
     turtle.turnLeft()
@@ -144,7 +148,7 @@ end
 
 walk()
 turtle.turnLeft()
-walk(anzahl_baume_quer*abstand_zw_baumen-1)
+walk((anzahl_baume_quer-1)*abstand_zw_baumen)
 turtle.turnLeft()
 
     
