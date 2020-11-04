@@ -53,7 +53,6 @@ local function run(size)
     walk()
 
     for x=1,size do
-        
         for y=1,size-1 do
             print("X: ", x, "Y: ", y)
             checkAndGo()
@@ -68,6 +67,13 @@ local function run(size)
                 checkAndGo()
                 turtle.turnLeft()
             end
+        end
+    end
+    if (size % 2 == 1) then
+        turtle.turnRight()
+        turtle.turnRight()
+        for y=1,size-1 do
+            walk()
         end
     end
     turtle.turnRight()
