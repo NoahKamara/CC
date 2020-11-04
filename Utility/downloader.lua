@@ -1,6 +1,5 @@
 -- GET INPUT
 print("local filpath: ")
-local filpath = read()
 print("github path: ")
 local url = "https://raw.githubusercontent.com/" .. read()
 
