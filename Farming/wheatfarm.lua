@@ -13,7 +13,8 @@ end
 
 local function walk()
     local success = turtle.forward()
-    while success do
+    while not success do
+        print("CANT MOVE FORWARD")
         success = turtle.forward()
     end
 end
@@ -24,23 +25,23 @@ local function plantSeed()
         if data and string.match(data['name'], "minecraft:wheat") then
             turtle.select(i)
             turtle.placeDown()
-            return
+            return true
         end
     end
-    error("NO SEEDS IN INVENTORY")
+    print("NO SEEDS IN INVENTORY")
+    return false
 end
 
 
 local function checkAndGo()
     local success, data = turtle.inspectDown()
-    success, data = turtle.inspectDown()
     if success then
         if data["state"]["age"] == 7 then
-            turtle.digDown("right")
+            turtle.digDown()
             plantSeed()
         end
     else
-        turtle.digDown("right")
+        turtle.digDown()
         plantSeed()
     end
     walk()
@@ -79,11 +80,30 @@ local function run(size)
     turtle.back()
 end
 
-print("FIELD SIZE: ")
-local size = tonumber(read())
 
+local function getFieldSize()
+    if fs.exists("farm.cfg") then
+        local file = fs.open("farm.cfg", "r")
+        local cfg = textutils.unserialise(file.read())
+        if cfg then
+            return tonumber(cfg.size)
+        end
+    end
+    print("FIELD SIZE: ")
+    local file = fs.open("farm.cfg", "w")
+    file.write(textutils.serialize({size = tonumber(read())}))
+    file.close()
+end
+
+
+local size = getFieldSize()
 while true do
+    term.clear()
+    term.setCursorPos(1,1)
+    print("REFUELING")
     refuel()
+    print("CHECKING CROPS")
     run(size)
+    print("SLEEPING (60s)")
     os.sleep(60)
 end
