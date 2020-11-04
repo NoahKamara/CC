@@ -73,7 +73,7 @@ local function chop_tree()
             d = "sed"
         end
         h = h + 1
-    until  string.match(data.name, "log")
+    until  string.match(d, "log")
     for i =1, h do
         turtle.down()
     end
