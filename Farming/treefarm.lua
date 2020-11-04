@@ -68,6 +68,9 @@ local function chop_tree()
         turtle.digUp()
         turtle.up()
         y, data = turtle.inspectUp()
+        if y== false then
+            data ="sed"
+        end
         h = h + 1
     until  string.match(data.name, "log") ~= "log"
     for i =1, h do
