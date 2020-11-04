@@ -91,7 +91,7 @@ local function walk_tree()
     if success then 
         turtle.dig()
         turtle.forward()
-        if  string.match(data.name, "log") == "log" then
+        if string.match(data.name, "log") == "log" then
             chop_tree()
             turtle.digDown()
             find_item("sapling")

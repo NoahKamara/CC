@@ -10,11 +10,13 @@ function download_from_github(filepath)
 
     -- WRITE TO FILE
     
-    local old_file = fs.open(filepath, "r")
-    if old_file then
-    if old_file.readAll() ~= content then print("Changed: ".. filepath) end
+    if fs.exists(filepath) then
+        local old_file = fs.open(filepath, "r")
+        if old_file.readAll() ~= content then print("Changed: ".. filepath) end
+
+        old_file.close()
     end
-    old_file.close()
+
     local file = fs.open(filepath, "w")
     file.write(content)
     file.close()
