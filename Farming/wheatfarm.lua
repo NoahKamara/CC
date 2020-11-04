@@ -25,10 +25,11 @@ local function plantSeed()
         if data and string.match(data['name'], "minecraft:wheat") then
             turtle.select(i)
             turtle.placeDown()
-            return
+            return true
         end
     end
-    error("NO SEEDS IN INVENTORY")
+    print("NO SEEDS IN INVENTORY")
+    return false
 end
 
 
