@@ -41,7 +41,7 @@ function find_item(item_name)
 end
 
 
-local function walk_tree_tree()
+local function walk_tree()
 
     local success, data = turtle.inspect()
     in_tree = true
@@ -102,6 +102,8 @@ if anzahl_baume_tiefe % 2 == 0 then
     walk_tree_back == true
 end
 
+walk_tree()
+
 for q, anzahl_baume_quer-1 do
     for t, anzahl_baume_tiefe-1*abstand_zw_baumen do
         walk_tree()
@@ -135,7 +137,7 @@ walk()
 turtle.turnLeft()
 walk(anzahl_baume_breite*abstand_zw_baumen-1)
 turtle.turnLeft()
-walk()
+
     
 
 
