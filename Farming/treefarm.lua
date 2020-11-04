@@ -107,7 +107,7 @@ anzahl_baume_quer = 4
 anzahl_baume_tiefe = 4
 abstand_zw_baumen = 5 --inclusive eigner stamm
 
-if anzahl_baume_tiefe % 2 == 0 then
+if anzahl_baume_tiefe % 2 ~= 0 then
     walk_tree_back = true
 end
 
