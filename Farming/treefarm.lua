@@ -108,6 +108,8 @@ abstand_zw_baumen = 5 --inclusive eigner stamm
 
 if anzahl_baume_tiefe % 2 ~= 0 then
     walk_tree_back = true
+else
+    walk_tree_back = false
 end
 
 walk_tree()
