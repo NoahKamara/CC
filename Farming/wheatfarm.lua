@@ -1,4 +1,3 @@
-require "turtle"
 
 local function refuel()
     for i=1,16 do
@@ -16,6 +15,7 @@ local function walk()
     local success = false
     while success do
         success = turtle.forward()
+        print(success)
     end
 end
 
