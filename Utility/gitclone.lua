@@ -1,7 +1,7 @@
 --Pastebin: 3a53ZgRE
 
 function download_from_github(filepath)
-    local url = "https://raw.githubusercontent.com/noahkamara/CC/master/" .. filpath 
+    local url = "https://raw.githubusercontent.com/noahkamara/CC/master/" .. filepath 
 
     -- URL REQUEST
     local response = http.get(url)
