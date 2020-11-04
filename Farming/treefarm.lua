@@ -33,7 +33,7 @@ function find_item(item_name)
 
     for i=1, 16 do
         local data = turtle.getItemDetail(i)
-        if data and string.match(data['name'], item_name) == item_name then
+        if string.match(data.name, item_name) == item_name then
             turtle.select(i)
             return i
         end
@@ -92,6 +92,8 @@ local function walk_tree()
             find_item("sapling")
             turtle.placeDown()
         end
+    else 
+        turtle.forward()
     end
 end
 
