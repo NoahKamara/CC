@@ -50,7 +50,7 @@ local function cut_leaves()
             turtle.dig()
             turtle.turnRight()
         end
-        walk()
+        turtle.back()
         turtle.turnRight()
     end
 end
@@ -111,7 +111,7 @@ end
 
 walk_tree()
 
-for q = 1, anzahl_baume_quer-1 do
+for q = 1, anzahl_baume_quer do
     for t = 1 , ((anzahl_baume_tiefe-1)*abstand_zw_baumen) do
         walk_tree()
     end
