@@ -79,11 +79,28 @@ local function run(size)
     turtle.back()
 end
 
-print("FIELD SIZE: ")
-local size = tonumber(read())
 
+local function getFieldSize()
+    if fs.exists("farm.cfg") then
+        local file = fs.open("farm.cfg", "r")
+        return textutils.unserialize(file.read()).size
+    else
+        print("FIELD SIZE: ")
+        local file = fs.open("farm.cfg", "w")
+        file.write(textutils.serialize({size = tonumber(read())}))
+        file.close()
+    end
+end
+
+
+local size = getFieldSize()
 while true do
+    term.clear()
+    term.setCursorPos(1,1)
+    print("REFUELING")
     refuel()
+    print("CHECKING CROPS")
     run(size)
+    print("SLEEPING (60s)")
     os.sleep(60)
 end
