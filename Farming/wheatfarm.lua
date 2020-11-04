@@ -12,7 +12,7 @@ local function refuel()
 end
 
 local function walk()
-    local success = false
+    local success = turtle.forward()
     while success do
         success = turtle.forward()
         print(success)
