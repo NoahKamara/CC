@@ -15,7 +15,6 @@ local function walk()
     local success = turtle.forward()
     while success do
         success = turtle.forward()
-        print(success)
     end
 end
 
@@ -54,7 +53,9 @@ local function run(size)
     walk()
 
     for x=1,size do
+        
         for y=1,size-1 do
+            print("X: ", x, "Y: ", y)
             checkAndGo()
         end
         if x < size then
