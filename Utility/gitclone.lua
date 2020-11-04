@@ -10,7 +10,7 @@ function download_from_github(filepath)
 
     -- WRITE TO FILE
     local file = fs.open(filepath, "w")
-    local old_file = file.readAll()
+    local old_file = fs.open(filepath, "r").readAll()
     if not old_file == content then print("Changed: ".. filepath) end
 
     file.write(content)
