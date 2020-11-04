@@ -27,13 +27,12 @@ local function plantSeed()
             return
         end
     end
-    print("NO SEEDS IN INVENTORY")
+    error("NO SEEDS IN INVENTORY")
 end
 
 
 local function checkAndGo()
     local success, data = turtle.inspectDown()
-    print(success, data)
     success, data = turtle.inspectDown()
     if success then
         if data["state"]["age"] == 7 then
