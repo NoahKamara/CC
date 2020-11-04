@@ -1,7 +1,7 @@
 --Pastebin: 3a53ZgRE
 
 function download_from_github(filepath)
-    local url = "https://raw.githubusercontent.com/noahkamara/CC/master/" .. filpath 
+    local url = "https://raw.githubusercontent.com/noahkamara/CC/master/" .. filepath 
 
     -- URL REQUEST
     local response = http.get(url)
@@ -10,9 +10,11 @@ function download_from_github(filepath)
 
     -- WRITE TO FILE
     local file = fs.open(filepath, "w")
-    local old_file = file.readAll()
-    if not old_file == content then print("Changed: ".. filepath) end
-
+    local old_file = fs.open(filepath, "r")
+    if not old_file then
+    if not old_file.readAll() == content then print("Changed: ".. filepath) end
+    end
+    old_file.close()
     file.write(content)
     file.close()
 end
