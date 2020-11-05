@@ -23,8 +23,10 @@ local function place_chest_and_fill()
     for i=1, 16 do
         turtle.select(i)
         data = turtle.getItemDetail()
-        if string.match(data["name"], "chest") ~= "chest" and string.match(data["name"], "coal") ~= "coal" and string.match(data["name"], "torch") ~= "torch" then
-            turtle.drop()
+        if not data ~= nil then
+            if string.match(data["name"], "chest") ~= "chest" and string.match(data["name"], "coal") ~= "coal" and string.match(data["name"], "torch") ~= "torch" then
+                turtle.drop()
+            end
         end
     end
 end
@@ -53,7 +55,7 @@ local function turtle_back_to_start(length)
     end
 end
 
-function chest2()
+function chest()
     turtle.back()
     turtle.turnRight()
     place_chest_and_fill()
@@ -65,10 +67,10 @@ for i=1, schaechte do
     turtle.turnLeft()
     Schacht.schacht(length)
     turtle_back_to_start(length)
-    chest2()
+    chest()
     Schacht.schacht(length)
     turtle_back_to_start(length)
-    chest2()
+    chest()
     turtle.turnRight()
     for i=1, 4 do 
         turtle.dig()
