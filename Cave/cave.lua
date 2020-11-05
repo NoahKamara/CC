@@ -67,29 +67,29 @@ end
 
 function fix_wall(weande_rep)
     if weande_rep then
-        turtle.turnLeft()
-        turtle.turnLeft()
+        -- turtle.turnLeft()
+        -- turtle.turnLeft()
         if not turtle.detect() then
             find_item("cobble")
             turtle.place()
         end
         turtle.select(1)
-        turtle.turnLeft()
-        turtle.turnLeft()
+        -- turtle.turnLeft()
+        -- turtle.turnLeft()
     end
 end
 
 function find_and_fix_front_or_back_wall(actuelle_hoehe, actuelle_tiefe, max_tiefe, weande_rep)
-    if actuelle_tiefe == 1  then
-        -- if  actuelle_hoehe % 2 ~= 0 then
-        --     turtle.turnRight()
-        --     fix_wall(weande_rep)
-        --     turtle.turnLeft()
-        -- elseif actuelle_hoehe % 2 == 0 then
-        --     turtle.turnRight()
-        --     fix_wall(weande_rep)
-        --     turtle.turnLeft()
-        -- end
+    if actuelle_tiefe == 1 and front_wall  then
+        if  actuelle_hoehe % 2 ~= 0 then
+            turtle.turnRight()
+            fix_wall(weande_rep)
+            turtle.turnLeft()
+        elseif actuelle_hoehe % 2 == 0 then
+            turtle.turnRight()
+            fix_wall(weande_rep)
+            turtle.turnLeft()
+        end
     elseif actuelle_tiefe == max_tiefe then
         if  (actuelle_hoehe  + max_tiefe) % 2 == 0 then  --(actuelle_hoehe % 2 == 0  and max_tiefe % 2 ~= 0) or (actuelle_hoehe % 2 ~= 0  and max_tiefe % 2 == 0)   then
             turtle.turnLeft()
@@ -137,13 +137,14 @@ function dig(hoehe, breite, tief, weande_rep, decke_rep)
             end    
             find_and_fix_front_or_back_wall(h, t, tiefe, weande_rep)
             if h == 1 then fix_ceiling(decke_rep) end
-            turtle.turnLeft()
-            turtle.turnLeft()
             fix_wall(weande_rep)
+            
             if h < hoehe then
                 walkdown()
             end
             fix_wall(weande_rep)
+            turtle.turnLeft()
+            turtle.turnLeft()
         end
         
         for x = 2, hoehe do
@@ -189,5 +190,14 @@ if decke == 1 then
 else
     decke_rep = true
 end
+
+print("Wenn die vordere Mauer gesetzt oder ergänzt werden sollen enter sonst 1:")
+decke = tonumber(read())
+if decke == 1 then
+    front_wall = false
+else
+    front_wall = true
+end
+
 
 dig(hoehe, breite, tiefe, weande_rep, decke_rep)
