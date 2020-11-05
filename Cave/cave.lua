@@ -81,21 +81,21 @@ end
 
 function find_and_fix_front_or_back_wall(actuelle_hoehe, actuelle_tiefe, max_tiefe, weande_rep)
     if actuelle_tiefe == 1 and front_wall  then
-        if  actuelle_hoehe % 2 ~= 0 then
+        if  actuelle_hoehe % 2 == 0 then
             turtle.turnRight()
             fix_wall(weande_rep)
             turtle.turnLeft()
-        elseif actuelle_hoehe % 2 == 0 then
-            turtle.turnRight()
-            fix_wall(weande_rep)
+        elseif actuelle_hoehe % 2 ~= 0 then
             turtle.turnLeft()
+            fix_wall(weande_rep)
+            turtle.turnRight()
         end
     elseif actuelle_tiefe == max_tiefe then
-        if  (actuelle_hoehe  + max_tiefe) % 2 == 0 then  --(actuelle_hoehe % 2 == 0  and max_tiefe % 2 ~= 0) or (actuelle_hoehe % 2 ~= 0  and max_tiefe % 2 == 0)   then
+        if  (actuelle_hoehe  + max_tiefe) % 2 ~= 0 then  --(actuelle_hoehe % 2 == 0  and max_tiefe % 2 ~= 0) or (actuelle_hoehe % 2 ~= 0  and max_tiefe % 2 == 0)   then
             turtle.turnLeft()
             fix_wall(weande_rep)
             turtle.turnRight()
-        elseif (actuelle_hoehe  + max_tiefe) % 2 ~= 0 then --(actuelle_hoehe % 2 ~= 0  and max_tiefe % 2 ~= 0) or (actuelle_hoehe % 2 == 0  and max_tiefe % 2 == 0)   then
+        elseif (actuelle_hoehe  + max_tiefe) % 2 == 0 then --(actuelle_hoehe % 2 ~= 0  and max_tiefe % 2 ~= 0) or (actuelle_hoehe % 2 == 0  and max_tiefe % 2 == 0)   then
             turtle.turnRight()
             fix_wall(weande_rep)
             turtle.turnLeft()
