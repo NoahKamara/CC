@@ -8,6 +8,23 @@ local function walk()
     end
 end
 
+local function walkup()
+    local success = false
+    while not success do
+        turtle.digUp()
+        success = turtle.up()
+    end
+end
+
+local function walkdown()
+    local success = false
+    while not success do
+        turtle.digDown()
+        success = turtle.down()
+    end
+end
+
+
 local function place_chest_and_fill()
     turtle.select(2)
     data = turtle.getItemDetail()
@@ -16,9 +33,10 @@ local function place_chest_and_fill()
         return "ERROR"
     end
     turtle.dig()
-    walk()
     turtle.digUp()
-    turtle.back()
+    walkup()
+    turtle.dig()
+    walkdown()
     turtle.place()
     for i=1, 16 do
         turtle.select(i)
