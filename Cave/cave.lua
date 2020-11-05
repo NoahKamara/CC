@@ -122,11 +122,12 @@ function dig(hoehe, breite, tief, weande_rep, decke_rep)
     --start
     for t=1, tiefe do
         -- print("schleife tiefe")
-        if t ~= 1 then
-            turtle.turnLeft()
-            turtle.turnLeft()
-        end
+        
+        turtle.turnLeft()
+        turtle.turnLeft()
+        
         fix_wall(weande_rep)
+
         turtle.turnLeft()
         turtle.turnLeft()
         for h = 1, hoehe do
