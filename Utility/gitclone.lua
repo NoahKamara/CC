@@ -13,7 +13,6 @@ function download_from_github(filepath)
     if fs.exists(filepath) then
         local old_file = fs.open(filepath, "r")
         if old_file.readAll() ~= content then print("Changed: ".. filepath) end
-
         old_file.close()
     end
 

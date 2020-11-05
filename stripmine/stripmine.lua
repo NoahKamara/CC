@@ -8,17 +8,33 @@ local function walk()
     end
 end
 
+local function place_chest_and_fill()
+    turtle.select(2)
+    data = turtle.getItemDetail()
+    if string.match(data["name"], "chest") ~= "chest" then
+        print("ERROR NO CHESTS")
+        return "ERROR"
+    end
+    turtle.dig()
+    turtle.place()
+    for i=1, 16 do
+        turtle.select(i)
+        if string.match(data["name"], "chest") ~= "chest" and string.match(data["name"], "coal") ~= "coal" and string.match(data["name"], "torch") ~= "torch" then
+            turtle.drop()
+        end
+    end
+end
 
 print("Wenn der erste Block der Abgebaut wird kein cobblestone ist, lege cobbelston in slot1; Tiefe der Seitenschächte: ")
 length = tonumber(read())
-
+print("Lege Kisten in Slot 2")
 local amount_torches = math.ceil(length/15)
 print("Lege ".. amount_torches .." Fackeln in slot 16" )
 
 print("Anzahl Seitenschächte pro Seite:")
 local schaechte = tonumber(read())
 
-function turtle_back_to_start(length)
+local function turtle_back_to_start(length)
     fuellevel = turtle.getFuelLevel()
         if fuellevel < 10 then
             Schacht.refuel()
@@ -33,15 +49,26 @@ function turtle_back_to_start(length)
     end
 end
 
+function chest2()
+    turtle.back()
+    turtle.turnRight()
+    place_chest_and_fill()
+    turtle.turnLeft()
+    turtle.forward()
+end
+
 for i=1, schaechte do
     turtle.turnLeft()
     Schacht.schacht(length)
     turtle_back_to_start(length)
+    chest2()
     Schacht.schacht(length)
     turtle_back_to_start(length)
+    chest2()
     turtle.turnRight()
-    for i3=1, 3 do 
+    for i=1, 4 do 
         turtle.dig()
+        turtle.digUp()
         walk()
     end
 end
