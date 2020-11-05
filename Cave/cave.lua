@@ -121,12 +121,18 @@ function dig(hoehe, breite, tief, weande_rep, decke_rep)
     turtle.turnLeft()
     --start
     for t=1, tiefe do
-        print("schleife tiefe")
+        -- print("schleife tiefe")
+        if t ~= 1 then
+            turtle.turnLeft()
+            turtle.turnLeft()
+        end
         fix_wall(weande_rep)
+        turtle.turnLeft()
+        turtle.turnLeft()
         for h = 1, hoehe do
-            print("schleife hoehe")
+            -- print("schleife hoehe")
             for b = 1, breite do
-                print("schleife breite")
+                -- print("schleife breite")
                 find_and_fix_front_or_back_wall(h, t, tiefe, weande_rep)
                 if h == 1 then fix_ceiling(decke_rep) end
                 walk()
