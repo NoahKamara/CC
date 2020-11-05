@@ -103,12 +103,19 @@ local function getFieldSize()
 end
 
 local function place_in_chest()
+    seed_slots = 0
     for i=1, 16 do
         turtle.select(i)
         data = turtle.getItemDetail()
-        if string.match(data["name"], "wheat")then
-            turtle.drop()
-        end
+        if data ~= nil 
+            if string.match(data["name"], "wheat")then
+                turtle.dropDown()
+            end
+            if string.match(data["name"], "seed")then
+                seed_slots = seed_slots + 1
+                if seed_slots > 2
+                turtle.drop()
+            end
     end
 end
 
