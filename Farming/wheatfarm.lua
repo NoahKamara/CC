@@ -102,6 +102,15 @@ local function getFieldSize()
     file.close()
 end
 
+local function place_in_chest()
+    for i=1, 16 do
+        turtle.select(i)
+        data = turtle.getItemDetail()
+        if string.match(data["name"], "wheat")then
+            turtle.drop()
+        end
+    end
+end
 
 local size = getFieldSize()
 while true do
@@ -111,6 +120,7 @@ while true do
     refuel()
     print("CHECKING CROPS")
     run(size)
+    place_in_chest()
     print("SLEEPING (60s)")
     os.sleep(60*13)
 end
