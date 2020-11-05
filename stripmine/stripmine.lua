@@ -23,7 +23,7 @@ local function place_chest_and_fill()
     for i=1, 16 do
         turtle.select(i)
         data = turtle.getItemDetail()
-        if not data ~= nil then
+        if data ~= nil then
             if string.match(data["name"], "chest") ~= "chest" and string.match(data["name"], "coal") ~= "coal" and string.match(data["name"], "torch") ~= "torch" then
                 turtle.drop()
             end
