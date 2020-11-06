@@ -151,8 +151,8 @@ for i=1, schaechte do
     turtle.placeUp()
     for i=1, 4 do 
         turtle.dig()
-        turtle.digUp()
         walk()
+        turtle.digUp()
     end
 end
 
