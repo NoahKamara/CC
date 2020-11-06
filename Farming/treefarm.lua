@@ -102,7 +102,7 @@ local function walk_tree()
 end
 
 
-anzahl_baume_quer = 4
+anzahl_baume_quer = 6
 anzahl_baume_tiefe = 5
 abstand_zw_baumen = 5 --inclusive eigner stamm
 
