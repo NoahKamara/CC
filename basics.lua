@@ -14,11 +14,11 @@ end
 reverseList = {}
 
 local function reverse(steps)
-    steps = steps or table.getn(reverseList)
+    steps = steps or #reverseList
     print(steps)
-    for i=table.getn(reverseList), steps, -1 do
+    for i=#reverseList, steps, -1 do
         reverseList[i]()
-        table.remove(reverseList,i)
+        reverseList[i] = nil
     end
 end
 function walk(steps)
