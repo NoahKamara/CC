@@ -3,7 +3,7 @@ local function refuel()
         local data = turtle.getItemDetail(i)
         if data and string.match(data['name'], "coal") then
             turtle.select(i)
-            turtle.refuel(15)
+            turtle.refuel(10)
             return true
         end
     end
