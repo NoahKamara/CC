@@ -11,46 +11,59 @@ local function refuel()
     return false
 end
 
-local function walk()
-    refuel()
-    local success = turtle.forward()
-    while not success do
-        turtle.dig()
-        success = turtle.forward()
+local function walk(steps)
+    steps = steps or 1
+    for i=1, steps do
+        refuel()
+        local success = turtle.forward()
+        while not success do
+            turtle.dig()
+            success = turtle.forward()
+        end
     end
 end
 
-local function walkUp()
-    refuel()
-    local success = turtle.up()
-    while not success do
-        turtle.digUp()
-        success = turtle.up()
+local function walkUp(steps)
+    steps = steps or 1
+    for i=1, steps do
+        refuel()
+        local success = turtle.up()
+        while not success do
+            turtle.digUp()
+            success = turtle.up()
+        end
     end
 end
 
-local function walkDown()
+local function walkDown(steps)
+    steps = steps or 1
+    for i=1, steps do
     refuel()
-    local success = turtle.down()
-    while not success do
-        turtle.digDown()
-        success = turtle.down()
+        local success = turtle.down()
+        while not success do
+            turtle.digDown()
+            success = turtle.down()
+        end
     end
 end
 
 
-local function walkBack()
-    refuel()
-    local success = turtle.back()
-    while not success do
-        turtle.turnLeft()
-        turtle.turnLeft()
-        turtle.dig()
-        turtle.turnLeft()
-        turtle.turnLeft()
-        success = turtle.back()
+local function walkBack(steps)
+    steps = steps or 1
+    for i=1, steps do
+        refuel()
+        local success = turtle.back()
+        while not success do
+            turtle.turnLeft()
+            turtle.turnLeft()
+            turtle.dig()
+            turtle.turnLeft()
+            turtle.turnLeft()
+            success = turtle.back()
+        end
     end
 end
+
 return {
     refuel = refuel,
     walk = walk,
