@@ -126,7 +126,7 @@ local function turtle_back_to_top(schaechte, y_koordinate)
     for i=1, 4 do 
         walk()
     end
-    for i=1, schaechte*2 do
+    for i=1, schaechte*4 do
         walk()
     end
 
