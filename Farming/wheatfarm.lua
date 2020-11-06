@@ -108,7 +108,7 @@ local function place_in_chest()
         turtle.select(i)
         data = turtle.getItemDetail()
         if data ~= nil then
-            if string.match(data["name"], ":wheat") then
+            if not string.match(data["name"], "seed") then --string.match(data["name"], ":wheat") and not string.match(data["name"], "seed") then
                 turtle.dropDown()
             end
             if string.match(data["name"], "seed") then
