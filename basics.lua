@@ -1,3 +1,4 @@
+-- How to use: basics = require("basics")
 local function refuel()
     for i=1,16 do
         local data = turtle.getItemDetail(i)
@@ -28,7 +29,7 @@ local function walkUp()
     end
 end
 
-local function walkdown()
+local function walkDown()
     refuel()
     local success = turtle.down()
     while not success do
@@ -37,9 +38,23 @@ local function walkdown()
     end
 end
 
+
+local function walkBack()
+    refuel()
+    local success = turtle.back()
+    while not success do
+        turtle.turnLeft()
+        turtle.turnLeft()
+        turtle.dig()
+        turtle.turnLeft()
+        turtle.turnLeft()
+        success = turtle.back()
+    end
+end
 return {
     refuel = refuel,
     walk = walk,
     walkUp = walkUp,
-    walkDown = walkdown
+    walkDown = walkDown,
+    walkBack = walkBack
 }
