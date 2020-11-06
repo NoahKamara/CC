@@ -16,6 +16,7 @@ reverseList = {}
 local function reverse(steps)
     steps = steps or #reverseList
     print(steps)
+    print(reverseList)
     for i=#reverseList, steps, -1 do
         reverseList[i]()
         reverseList[i] = nil
