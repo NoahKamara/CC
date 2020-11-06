@@ -14,7 +14,8 @@ end
 reverseList = {}
 
 local function reverse(steps)
-    steps = (#reverseList-steps+1) or 1
+    if steps ~= nil then steps = #reverseList-steps+1 end
+    if steps == nil then steps = 1 end
     for i=#reverseList, steps, -1 do
         reverseList[i](nil, false)
         reverseList[i] = nil
