@@ -113,8 +113,9 @@ local function place_in_chest()
             end
             if string.match(data["name"], "seed")then
                 seed_slots = seed_slots + 1
-                if seed_slots > 2
-                turtle.drop()
+                if seed_slots > 2 then
+                    turtle.drop()
+                end
             end
     end
 end
