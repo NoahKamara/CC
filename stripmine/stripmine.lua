@@ -92,6 +92,21 @@ local function turtle_back_to_start(length)
     end
 end
 
+local function drop_coal(coal_stacks)
+    c = coal_stacks
+    for i=1, 16 do
+        turtle.select(i)
+        data = turtle.getItemDetail()
+        if data ~= nil then
+            if string.match(data["name"], ":coal") == ":coal" and c > 2 then
+                c = c - 1
+                turtle.drop()
+            end
+        end
+    end
+end
+
+
 function chest()
     --turtle.back()
     turtle.turnRight()
@@ -117,20 +132,6 @@ local function turtle_back_to_top(schaechte, y_koordinate)
 
     for i = 1 , y_koordinate-5 do
         walkup()
-    end
-end
-
-local function drop_coal(coal_stacks)
-    c = coal_stacks
-    for i=1, 16 do
-        turtle.select(i)
-        data = turtle.getItemDetail()
-        if data ~= nil then
-            if string.match(data["name"], ":coal") == ":coal" and c > 2 then
-                c = c - 1
-                turtle.drop()
-            end
-        end
     end
 end
 

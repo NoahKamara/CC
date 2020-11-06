@@ -91,7 +91,7 @@ function schacht(length)
         walk()
         turtle.digUp()
         detect_ore_and_dig()
-        if i % 15 == 0 then
+        if i % 10 == 0 then
             place_torche()
         end
     end
