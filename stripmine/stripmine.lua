@@ -49,6 +49,13 @@ local function place_chest_and_fill()
     end
 end
 
+
+-- function zubringer(y_koordinate_start)
+--     for i = 1, y_koordinate_start-5 do
+--         walkdown()
+--     end
+-- end
+
 print("Wenn der erste Block der Abgebaut wird kein cobblestone ist, lege cobbelston in slot1; Tiefe der Seitenschächte: ")
 length = tonumber(read())
 print("Lege Kisten in Slot 2")
@@ -58,6 +65,12 @@ print("Lege ".. amount_torches .." Fackeln in slot 16" )
 print("Anzahl Seitenschächte pro Seite:")
 local schaechte = tonumber(read())
 
+print("y-koordinat:")
+local y_kooridnate = tonumber(read())
+
+--print("Anzahl der Ebenen:")
+--local ebene = tonumber(read())
+
 local function turtle_back_to_start(length)
     fuellevel = turtle.getFuelLevel()
         if fuellevel < 10 then
@@ -65,7 +78,7 @@ local function turtle_back_to_start(length)
         end
     turtle.turnLeft()
     turtle.turnLeft()
-    for i2=1, length do
+    for i2=1, length-1 do
         if turtle.detect() then
             turtle.dig()
         end   
@@ -74,13 +87,40 @@ local function turtle_back_to_start(length)
 end
 
 function chest()
-    turtle.back()
+    --turtle.back()
     turtle.turnRight()
     place_chest_and_fill()
     turtle.turnLeft()
     turtle.forward()
 end
 
+local function turtle_back_to_top(schaechte, y_koordinate)
+    fuellevel = turtle.getFuelLevel()
+        if fuellevel < 10 then
+            Schacht.refuel()
+        end
+    turtle.turnLeft()
+    turtle.turnLeft()
+    for i=1, 4 do 
+        walk()
+    end
+    for i=1, schaechte*2 do
+        walk()
+    end
+
+    for i = 1 , y_koordinate_start-5 do
+        walkup()
+    end
+end
+
+
+
+--runter zur mine
+for i = 1 , y_koordinate_start-5 do
+    walkdown()
+end
+
+-- in der mine
 for i=1, schaechte do
     turtle.turnLeft()
     Schacht.schacht(length)
@@ -96,7 +136,8 @@ for i=1, schaechte do
         walk()
     end
 end
-    
+
+turtle_back_to_top(schaechte, y_koordinate)
 
 
 
