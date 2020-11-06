@@ -120,7 +120,7 @@ local y_kooridnate = tonumber(read())
 
 
 repeat
-    for i = 1 , y_koordinate_start-5 do
+    for i = 1 , y_koordinate-5 do
         walkdown()
     end
 
