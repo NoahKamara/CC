@@ -15,16 +15,17 @@ reverseList = {}
 
 local function reverse(steps)
     steps = steps or table.getn(reverseList)
+    print(steps)
     for i=table.getn(reverseList), steps, -1 do
         reverseList[i]()
         table.remove(reverseList,i)
     end
 end
 function walk(steps)
-    table.insert(reverseList, walkBack)
     steps = steps or 1
     for i=1, steps do
         refuel()
+        table.insert(reverseList, walkBack)
         local success = turtle.forward()
         while not success do
             turtle.dig()
@@ -34,10 +35,10 @@ function walk(steps)
 end
 
 function walkUp(steps)
-    table.insert(reverseList, walkDown)
     steps = steps or 1
     for i=1, steps do
         refuel()
+        table.insert(reverseList, walkDown)
         local success = turtle.up()
         while not success do
             turtle.digUp()
@@ -47,10 +48,10 @@ function walkUp(steps)
 end
 
 function walkDown(steps)
-    table.insert(reverseList, walkUp)
     steps = steps or 1
     for i=1, steps do
     refuel()
+    table.insert(reverseList, walkUp)
         local success = turtle.down()
         while not success do
             turtle.digDown()
@@ -61,10 +62,10 @@ end
 
 
 function walkBack(steps)
-    table.insert(reverseList, walk)
     steps = steps or 1
     for i=1, steps do
         refuel()
+        table.insert(reverseList, walk)
         local success = turtle.back()
         while not success do
             turtle.turnLeft()
