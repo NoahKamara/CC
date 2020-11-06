@@ -11,7 +11,17 @@ local function refuel()
     return false
 end
 
-local function walk(steps)
+reverseList = {}
+
+local function reverse(steps)
+    steps = steps or table.getn(reverseList)
+    for i=table.getn(reverseList), steps, -1 do
+        reverseList[i]()
+        table.remove(reverseList,i)
+    end
+end
+function walk(steps)
+    table.insert(reverseList, walkBack)
     steps = steps or 1
     for i=1, steps do
         refuel()
@@ -23,7 +33,8 @@ local function walk(steps)
     end
 end
 
-local function walkUp(steps)
+function walkUp(steps)
+    table.insert(reverseList, walkDown)
     steps = steps or 1
     for i=1, steps do
         refuel()
@@ -35,7 +46,8 @@ local function walkUp(steps)
     end
 end
 
-local function walkDown(steps)
+function walkDown(steps)
+    table.insert(reverseList, walkUp)
     steps = steps or 1
     for i=1, steps do
     refuel()
@@ -48,7 +60,8 @@ local function walkDown(steps)
 end
 
 
-local function walkBack(steps)
+function walkBack(steps)
+    table.insert(reverseList, walk)
     steps = steps or 1
     for i=1, steps do
         refuel()
@@ -69,5 +82,6 @@ return {
     walk = walk,
     walkUp = walkUp,
     walkDown = walkDown,
-    walkBack = walkBack
+    walkBack = walkBack,
+    reverse = reverse,
 }
