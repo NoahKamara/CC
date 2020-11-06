@@ -102,7 +102,7 @@ local function turtle_back_to_top(schaechte, y_koordinate)
         end
     turtle.turnLeft()
     turtle.turnLeft()
-    for i=1, schaechte*2 do
+    for i=1, schaechte*2+4 do
         walk()
     end
 
@@ -138,7 +138,7 @@ repeat
         end
     end
 
-    turtle_back_to_top(schaechte, y_kooridnate)
+    turtle_back_to_top(schaechte, y_koordinate)
     coal_stacks, mine_empty = drop_in_storage()
     drop_coal(coal_stacks)	
 
