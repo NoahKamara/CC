@@ -108,7 +108,7 @@ local function turtle_back_to_top(schaechte, y_koordinate)
         walk()
     end
 
-    for i = 1 , y_koordinate_start-5 do
+    for i = 1 , y_koordinate-5 do
         walkup()
     end
 end
