@@ -16,10 +16,11 @@ reverseList = {}
 local function reverse(steps)
     steps = steps or #reverseList
     print(steps)
+    print(#reverseList)
     print(reverseList)
     for i=#reverseList, steps, -1 do
         reverseList[i]()
-        reverseList[i] = nil
+        table.remove(reverseList,i)
     end
 end
 function walk(steps)
