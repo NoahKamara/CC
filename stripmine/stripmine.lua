@@ -1,5 +1,17 @@
 os.loadAPI("stripmine/Schacht.lua")
 
+function refuel()
+    for i=1,16 do
+        local data = turtle.getItemDetail(i)
+        if data and string.match(data['name'], "coal") then
+            turtle.select(i)
+            turtle.refuel(15)
+            return true
+        end
+    end
+    return false
+end
+
 local function walk()
     local success = false
     while not success do
@@ -17,6 +29,10 @@ local function walkup()
 end
 
 local function walkdown()
+    fuellevel = turtle.getFuelLevel()
+        if fuellevel < 10 then
+            refuel()
+        end
     local success = false
     while not success do
         turtle.digDown()
@@ -56,20 +72,6 @@ end
 --     end
 -- end
 
-print("Wenn der erste Block der Abgebaut wird kein cobblestone ist, lege cobbelston in slot1; Tiefe der Seitenschächte: ")
-length = tonumber(read())
-print("Lege Kisten in Slot 2")
-local amount_torches = math.ceil(length/15)
-print("Lege ".. amount_torches .." Fackeln in slot 16" )
-
-print("Anzahl Seitenschächte pro Seite:")
-local schaechte = tonumber(read())
-
-print("y-koordinat:")
-local y_kooridnate = tonumber(read())
-
---print("Anzahl der Ebenen:")
---local ebene = tonumber(read())
 
 local function turtle_back_to_start(length)
     fuellevel = turtle.getFuelLevel()
@@ -114,9 +116,24 @@ local function turtle_back_to_top(schaechte, y_koordinate)
 end
 
 
+print("Wenn der erste Block der Abgebaut wird kein cobblestone ist, lege cobbelston in slot1; Tiefe der Seitenschächte: ")
+length = tonumber(read())
+print("Lege Kisten in Slot 2")
+local amount_torches = math.ceil(length/15)
+print("Lege ".. amount_torches .." Fackeln in slot 16" )
+
+print("Anzahl Seitenschächte pro Seite:")
+local schaechte = tonumber(read())
+
+print("y-koordinat:")
+local y_koordinate = tonumber(read())
+
+--print("Anzahl der Ebenen:")
+--local ebene = tonumber(read())
+
 
 --runter zur mine
-for i = 1 , y_koordinate-5 do
+for i = 1, y_koordinate-5 do
     walkdown()
 end
 
