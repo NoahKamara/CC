@@ -16,16 +16,19 @@ reverseList = {}
 local function reverse(steps)
     steps = steps or #reverseList
     for i=#reverseList, steps-#reverseList, -1 do
-        reverseList[i]()
-        table.remove(reverseList,i)
+        reverseList[i](nil, false)
+            table.remove(reverseList,i)
     end
 end
 
-function walk(steps)
+function walk(steps, save)
+    save = save or true
     steps = steps or 1
     for i=1, steps do
         refuel()
-        table.insert(reverseList, walkBack)
+        if save then
+            table.insert(reverseList, walkBack)
+        end
         local success = turtle.forward()
         while not success do
             turtle.dig()
@@ -34,11 +37,14 @@ function walk(steps)
     end
 end
 
-function walkUp(steps)
+function walkUp(steps, save)
+    save = save or true
     steps = steps or 1
     for i=1, steps do
         refuel()
-        table.insert(reverseList, walkDown)
+        if save then
+            table.insert(reverseList, walkDown)
+        end
         local success = turtle.up()
         while not success do
             turtle.digUp()
@@ -47,11 +53,13 @@ function walkUp(steps)
     end
 end
 
-function walkDown(steps)
+function walkDown(steps,save)
+    save = save or true
     steps = steps or 1
     for i=1, steps do
     refuel()
-    table.insert(reverseList, walkUp)
+        if save then
+    table.insert(reverseList, walkUp)end
         local success = turtle.down()
         while not success do
             turtle.digDown()
@@ -61,11 +69,14 @@ function walkDown(steps)
 end
 
 
-function walkBack(steps)
+function walkBack(steps, save)
+    save = save or true
     steps = steps or 1
     for i=1, steps do
         refuel()
+        if save then
         table.insert(reverseList, walk)
+        end
         local success = turtle.back()
         while not success do
             turtle.turnLeft()
@@ -78,19 +89,29 @@ function walkBack(steps)
     end
 end
 
-function turnLeft(steps)
+function turnLeft(steps, save)
+    save = save or true
     steps = steps or 1
     for i=1, steps do
+
+        if save then
         table.insert(reverseList, turnRight)
+        end
         turtle.turnLeft()
+        
+
     end 
 end
 
-function turnRight(steps)
+function turnRight(steps, save)
+    save = save or true
     steps = steps or 1
     for i=1, steps do
+        if save then
         table.insert(reverseList, turnLeft)
+        end
         turtle.turnRight()
+
     end 
 end
 
