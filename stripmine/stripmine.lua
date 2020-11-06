@@ -167,12 +167,15 @@ for i=1, schaechte do
     turtle_back_to_start(length)
     chest()
     turtle.turnRight()
-    turtle.select(16)
-    turtle.placeUp()
+    
     for i=1, 4 do 
         turtle.dig()
         walk()
         turtle.digUp()
+        if i == 2 then
+            turtle.select(16)
+            turtle.placeUp()
+        end
     end
 end
 
