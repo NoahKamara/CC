@@ -69,7 +69,7 @@ local function drop_in_storage()
         turtle.select(i)
         data = turtle.getItemDetail()
         if data ~= nil then
-            if string.match(data["name"], "coal") ~= "coal" 
+            if string.match(data["name"], "coal") ~= "coal" then
                 coal_stacks = coal_stacks + 1
                 turtle.drop()
             end
@@ -116,7 +116,7 @@ print("Anzahl Seitenschächte pro Seite:")
 local schaechte = tonumber(read())
 
 print("y-koordinat:")
-local y_kooridnate = tonumber(read())
+local y_koordinate = tonumber(read())
 
 
 repeat
