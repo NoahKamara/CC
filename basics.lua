@@ -18,7 +18,7 @@ local function reverse(steps)
     if steps == nil then steps = 1 end
     for i=#reverseList, steps, -1 do
         reverseList[i](nil, false)
-        reverseList[i] = nil
+        table.remove(reverseList, i)
     end
 end
 
