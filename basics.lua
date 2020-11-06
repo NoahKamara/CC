@@ -18,11 +18,13 @@ local function reverse(steps)
     print(steps)
     print(#reverseList)
     print(reverseList)
+    print(tonumber())
     for i=#reverseList, steps, -1 do
         reverseList[i]()
         table.remove(reverseList,i)
     end
 end
+
 function walk(steps)
     steps = steps or 1
     for i=1, steps do
