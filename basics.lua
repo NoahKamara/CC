@@ -78,6 +78,22 @@ function walkBack(steps)
     end
 end
 
+function turnLeft(steps)
+    steps = steps or 1
+    for i=1, steps do
+        table.insert(reverseList, turnRight)
+        turtle.turnLeft()
+    end 
+end
+
+function turnRight(steps)
+    steps = steps or 1
+    for i=1, steps do
+        table.insert(reverseList, turnLeft)
+        turtle.turnRight()
+    end 
+end
+
 return {
     refuel = refuel,
     walk = walk,
@@ -85,4 +101,6 @@ return {
     walkDown = walkDown,
     walkBack = walkBack,
     reverse = reverse,
+    turnRight = turnRight,
+    turnLeft = turnLeft
 }
