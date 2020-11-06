@@ -64,6 +64,7 @@ end
 
 -- dropped items, returned stacks an coal, returned falls wenn ein slot leer war
 local function drop_in_storage()
+    coal_stacks = 0
     one_empty = false
     for i=1, 16 do
         turtle.select(i)
@@ -133,7 +134,7 @@ repeat
         turtle.turnRight()
         empty_chest()
         turtle.turnLeft()
-        for i=1, 4 do 
+        for i=1, 2 do 
             walk()
         end
     end
