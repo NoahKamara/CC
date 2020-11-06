@@ -15,11 +15,7 @@ reverseList = {}
 
 local function reverse(steps)
     steps = steps or #reverseList
-    print(steps)
-    print(#reverseList)
-    print(reverseList)
-    print(tonumber())
-    for i=#reverseList, steps, -1 do
+    for i=#reverseList, steps-#reverseList, -1 do
         reverseList[i]()
         table.remove(reverseList,i)
     end
