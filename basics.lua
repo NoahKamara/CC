@@ -1,3 +1,4 @@
+-- How to use: basics = require("basics")
 local function refuel()
     for i=1,16 do
         local data = turtle.getItemDetail(i)
