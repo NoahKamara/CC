@@ -28,7 +28,7 @@ local function walkUp()
     end
 end
 
-local function walkDown()
+local function walkdown()
     refuel()
     local success = turtle.down()
     while not success do
@@ -41,5 +41,5 @@ return {
     refuel = refuel,
     walk = walk,
     walkUp = walkUp,
-    walkDown = walkDown
+    walkDown = walkdown
 }
