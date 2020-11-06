@@ -88,7 +88,7 @@ local function drop_coal(coal_stacks)
         turtle.select(i)
         data = turtle.getItemDetail()
         if data ~= nil then
-            if string.match(data["name"], "_coal") == "_coal" and c > 2 then
+            if string.match(data["name"], ":coal") == ":coal" and c > 2 then
                 c = c - 1
                 turtle.drop()
             end
