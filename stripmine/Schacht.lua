@@ -1,5 +1,6 @@
+basics = require("basics")
 
-local function walk()
+local function basics.walk()
     local success = false
     while not success do
         turtle.dig()
@@ -9,25 +10,25 @@ end
 
 local function place_torche()
     turtle.up()
-    turtle.back()
-    turtle.turnRight()
+    basics.walkBack()
+    basics.turnRight()
     if not turtle.detect() then
         turtle.select(1)
         turtle.place()
     end
-    turtle.turnLeft()
-    walk()
-    turtle.turnRight()
-    turtle.turnRight()
+    basics.turnLeft()
+    basics.walk()
+    basics.turnRight()
+    basics.turnRight()
     turtle.select(16)
     turtle.place()
-    turtle.turnLeft()
-    turtle.turnLeft()
+    basics.turnLeft()
+    basics.turnLeft()
     turtle.down()
 end
 
 function refuel()
-    for i=1,16 do
+    for i = 1, 16 do
         local data = turtle.getItemDetail(i)
         if data and string.match(data['name'], "coal") then
             turtle.select(i)
@@ -39,62 +40,45 @@ function refuel()
 end
 
 local function check_ore(success, data)
-    if not success then
-        return false
-    end
+    if not success then return false end
     return string.match(data["name"], "ore")
 end
 
 local function detect_ore_and_dig()
-    for i = 1,2 do
+    for i = 1, 2 do
         if i == 1 then
             -- Detect / Dig Down
             local success, data = turtle.inspectDown()
-            if check_ore(success, data) then
-                turtle.digDown()
-            end
+            if check_ore(success, data) then turtle.digDown() end
         else
             -- Detect / Dig Up
             turtle.up()
             local success, data = turtle.inspectUp()
-            if check_ore(success, data) then
-                turtle.digUp()
-            end
+            if check_ore(success, data) then turtle.digUp() end
         end
         -- Detect / Dig Right
-        turtle.turnRight()
+        basics.turnRight()
         local success, data = turtle.inspect()
-        if check_ore(success, data) then
-            turtle.dig()
-        end
-        turtle.turnLeft()
+        if check_ore(success, data) then turtle.dig() end
+        basics.turnLeft()
         -- Detect / Dig Left
-        turtle.turnLeft()
+        basics.turnLeft()
         local success, data = turtle.inspect()
-        if check_ore(success, data) then
-            turtle.dig()
-        end
-        turtle.turnRight()
+        if check_ore(success, data) then turtle.dig() end
+        basics.turnRight()
     end
     turtle.down()
 end
 
-
-
 function schacht(length)
-    for i=1, length do
+    for i = 1, length do
         fuellevel = turtle.getFuelLevel()
-        if fuellevel < 10 then
-            refuel()
-        end
+        if fuellevel < 10 then refuel() end
         turtle.dig()
-        walk()
+        basics.walk()
         turtle.digUp()
         detect_ore_and_dig()
-        if i % 10 == 0 then
-            place_torche()
-        end
+        if i % 10 == 0 then place_torche() end
     end
 end
-
 

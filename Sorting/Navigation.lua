@@ -27,16 +27,12 @@ local function down()
     end
 end
 
-
-
 local NAV = {}
 
 -- Retrieves Location from persistence
 function NAV.getLocation()
     local location = CFG.load('config/location.cfg')
-    if not location then
-        return {x=0, y=0, z=0, facing="y"}
-    end
+    if not location then return {x = 0, y = 0, z = 0, facing = "y"} end
     return location
 end
 
@@ -45,21 +41,17 @@ function NAV.setLocation(location)
     return CFG.save(location, 'config/location.cfg')
 end
 
-
-
 -- Turns the turtle to the given side
 -- side (str): Side
 function NAV.turnTo(side)
-    
+
     local loc = NAV.getLocation()
 
-    if (loc.facing == side) then
-        return loc
-    end
+    if (loc.facing == side) then return loc end
 
     local turning = true
     while turning do
-        turtle.turnRight()
+        basics.turnRight()
         local old = loc.facing
         if loc.facing == "y" then
             loc.facing = "x"
@@ -76,20 +68,17 @@ function NAV.turnTo(side)
     return loc
 end
 
-
 -- Moves the turtle to the given Z coordinate
 -- z (int): z-coordinate
 function NAV.goToZ(z)
     local loc = NAV.getLocation()
-    if loc.z == z then
-        return
-    end
+    if loc.z == z then return end
     NAV.goToX(0)
     NAV.goToY(0)
 
     local loc = NAV.getLocation()
 
-    for i=1,math.abs(loc.z-z) do
+    for i = 1, math.abs(loc.z - z) do
         local op = down
         local dir = 0
         if z > loc.z then
@@ -100,14 +89,13 @@ function NAV.goToZ(z)
             dir = -1
         end
         op()
-        loc.z = loc.z + 1/2 * dir
+        loc.z = loc.z + 1 / 2 * dir
         op()
         op()
-        loc.z = loc.z + 1/2 * dir
+        loc.z = loc.z + 1 / 2 * dir
         NAV.setLocation(loc)
     end
 end
-
 
 -- Moves the turtle to the given X coordinate
 -- x (int): x-coordinate
@@ -122,7 +110,7 @@ function NAV.goToX(x)
             dir = -1
             loc = NAV.turnTo("-x")
         end
-        for i=1,math.abs(loc.x-x) do
+        for i = 1, math.abs(loc.x - x) do
             forward()
             loc.x = loc.x + dir
             NAV.setLocation(loc)
@@ -130,7 +118,6 @@ function NAV.goToX(x)
     end
     NAV.setLocation(loc)
 end
-
 
 -- Moves the turtle to the given Y coordinate
 -- y (int): y-coordinate
@@ -141,7 +128,7 @@ function NAV.goToY(y)
         if y > loc.y then
             dir = 1
             loc = NAV.turnTo("y")
-            for i=1,math.abs(loc.y - y) do
+            for i = 1, math.abs(loc.y - y) do
                 forward()
                 loc.y = loc.y + dir
                 NAV.setLocation(loc)
@@ -149,7 +136,7 @@ function NAV.goToY(y)
         else
             dir = -1
             loc = NAV.turnTo("-y")
-            for i=1,math.abs(loc.y - y) do
+            for i = 1, math.abs(loc.y - y) do
                 forward()
                 loc.y = loc.y + dir
                 NAV.setLocation(loc)
@@ -158,7 +145,6 @@ function NAV.goToY(y)
     end
     NAV.setLocation(loc)
 end
-
 
 -- Moves the turtle to the given Location
 -- location (table): location containing coordinates

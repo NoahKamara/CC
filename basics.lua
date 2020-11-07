@@ -72,14 +72,14 @@ function walkBack(steps, save)
     for i = 1, steps do
         refuel()
         if save then table.insert(reverseList, walk) end
-        local success = turtle.back()
+        local success = basics.walkBack()
         while not success do
-            turtle.turnLeft()
-            turtle.turnLeft()
+            basics.turnLeft()
+            basics.turnLeft()
             turtle.dig()
-            turtle.turnLeft()
-            turtle.turnLeft()
-            success = turtle.back()
+            basics.turnLeft()
+            basics.turnLeft()
+            success = basics.walkBack()
         end
     end
 end
@@ -90,7 +90,7 @@ function turnLeft(steps, save)
     for i = 1, steps do
 
         if save then table.insert(reverseList, turnRight) end
-        turtle.turnLeft()
+        basics.turnLeft()
 
     end
 end
@@ -100,7 +100,7 @@ function turnRight(steps, save)
     steps = steps or 1
     for i = 1, steps do
         if save then table.insert(reverseList, turnLeft) end
-        turtle.turnRight()
+        basics.turnRight()
 
     end
 end

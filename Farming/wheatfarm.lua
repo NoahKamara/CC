@@ -1,5 +1,7 @@
+basics = require("basics")
+
 local function refuel()
-    for i=1,16 do
+    for i = 1, 16 do
         local data = turtle.getItemDetail(i)
         if data and string.match(data['name'], "coal") then
             turtle.select(i)
@@ -10,16 +12,8 @@ local function refuel()
     return false
 end
 
-local function walk()
-    local success = turtle.forward()
-    while not success do
-        print("CANT MOVE FORWARD")
-        success = turtle.forward()
-    end
-end
-
 local function plantSeed()
-    for i=1,16 do
+    for i = 1, 16 do
         local data = turtle.getItemDetail(i)
         if data and string.match(data['name'], "minecraft:wheat") then
             turtle.select(i)
@@ -30,7 +24,6 @@ local function plantSeed()
     print("NO SEEDS IN INVENTORY")
     return false
 end
-
 
 local function checkAndGo()
     local success, data = turtle.inspectDown()
@@ -46,45 +39,38 @@ local function checkAndGo()
     turtle.forward()
 end
 
-
-
 local function run(size)
-    walk()
+    basics.walk()
 
-    for x=1,size do
-        for y=1,size-1 do
+    for x = 1, size do
+        for y = 1, size - 1 do
             print("X: ", x, "Y: ", y)
             checkAndGo()
         end
         if x < size then
             if (x % 2 == 1) then
-                turtle.turnRight()
+                basics.turnRight()
                 checkAndGo()
-                turtle.turnRight()
+                basics.turnRight()
             else
-                turtle.turnLeft()
+                basics.turnLeft()
                 checkAndGo()
-                turtle.turnLeft()
+                basics.turnLeft()
             end
         end
     end
     if (size % 2 == 1) then
-        turtle.turnRight()
-        turtle.turnRight()
-        for y=1,size-1 do
-            walk()
-        end
+        basics.turnRight()
+        basics.turnRight()
+        for y = 1, size - 1 do basics.walk() end
     end
-    turtle.turnRight()
+    basics.turnRight()
 
-    for y=1, size-1 do
-        walk()
-    end
+    for y = 1, size - 1 do basics.walk() end
 
-    turtle.turnRight()
-    turtle.back()
+    basics.turnRight()
+    basics.walkBack()
 end
-
 
 local function getFieldSize()
     if fs.exists("farm.cfg") then
@@ -92,9 +78,7 @@ local function getFieldSize()
         local content = file.readAll()
         file.close()
         local cfg = textutils.unserialise(content)
-        if cfg then
-            return tonumber(cfg.size)
-        end
+        if cfg then return tonumber(cfg.size) end
     end
     print("FIELD SIZE: ")
     local file = fs.open("farm.cfg", "w")
@@ -104,18 +88,17 @@ end
 
 local function place_in_chest()
     seed_slots = 0
-    for i=1, 16 do
+    for i = 1, 16 do
         turtle.select(i)
         data = turtle.getItemDetail()
         if data ~= nil then
-            if not string.match(data["name"], "seed") and not string.match(data["name"], "coal") then --string.match(data["name"], ":wheat") and not string.match(data["name"], "seed") then
+            if not string.match(data["name"], "seed") and
+                not string.match(data["name"], "coal") then -- string.match(data["name"], ":wheat") and not string.match(data["name"], "seed") then
                 turtle.dropDown()
             end
             if string.match(data["name"], "seed") then
                 seed_slots = seed_slots + 1
-                if seed_slots > 2 then
-                    turtle.drop()
-                end
+                if seed_slots > 2 then turtle.drop() end
             end
         end
     end
@@ -124,12 +107,12 @@ end
 local size = getFieldSize()
 while true do
     term.clear()
-    term.setCursorPos(1,1)
+    term.setCursorPos(1, 1)
     print("REFUELING")
     refuel()
     print("CHECKING CROPS")
     run(size)
     place_in_chest()
     print("SLEEPING (60s)")
-    os.sleep(60*13)
+    os.sleep(60 * 13)
 end
