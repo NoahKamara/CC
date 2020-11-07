@@ -1,16 +1,16 @@
 basics = require("basics")
 
-function refuel()
-    for i = 1, 16 do
-        local data = turtle.getItemDetail(i)
-        if data and string.match(data['name'], "coal") then
-            turtle.select(i)
-            turtle.refuel(5)
-            return true
-        end
-    end
-    return false
-end
+-- function refuel()
+--     for i = 1, 16 do
+--         local data = turtle.getItemDetail(i)
+--         if data and string.match(data['name'], "coal") then
+--             turtle.select(i)
+--             turtle.refuel(5)
+--             return true
+--         end
+--     end
+--     return false
+-- end
 
 local function zubringer(y_koordinate_start)
     for i = 1, y_koordinate_start - 5 do basics.walkDown() end
@@ -67,31 +67,33 @@ local function turtle_back_to_top(schaechte, y_koordinate)
     for i = 1, y_koordinate - 5 do basics.walkUp() end
 end
 
-print("Anzahl Seitenschächte pro Seite:")
-local schaechte = tonumber(read())
+-- print("Anzahl Seitenschächte pro Seite:")
+-- local schaechte = tonumber(read())
 
-print("y-koordinat:")
-local y_koordinate = tonumber(read())
+-- print("y-koordinat:")
+-- local y_koordinate = tonumber(read())
 
-repeat
-    for i = 1, y_koordinate - 5 do basics.walkDown() end
+function ernte(schaechte, y_koordinate)
+    repeat
+        for i = 1, y_koordinate - 5 do basics.walkDown() end
 
-    for i = 1, schaechte do
+        for i = 1, schaechte do
+            basics.turnLeft()
+            empty_chest()
+            basics.turnRight()
+            basics.walk()
+            basics.walk()
+            basics.turnRight()
+            empty_chest()
+            basics.turnLeft()
+            for i = 1, 2 do basics.walk() end
+        end
+
+        turtle_back_to_top(schaechte, y_koordinate)
+        coal_stacks, mine_empty = drop_in_storage()
+        drop_coal(coal_stacks)
+
         basics.turnLeft()
-        empty_chest()
-        basics.turnRight()
-        basics.walk()
-        basics.walk()
-        basics.turnRight()
-        empty_chest()
         basics.turnLeft()
-        for i = 1, 2 do basics.walk() end
-    end
-
-    turtle_back_to_top(schaechte, y_koordinate)
-    coal_stacks, mine_empty = drop_in_storage()
-    drop_coal(coal_stacks)
-
-    basics.turnLeft()
-    basics.turnLeft()
-until mine_empty
+    until mine_empty
+end

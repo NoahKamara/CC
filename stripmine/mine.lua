@@ -1,5 +1,7 @@
 os.loadAPI("stripmine/Schacht.lua")
+os.loadAPI("stripmine/ernte_mine.lua")
 basics = require("basics")
+
 local function place_chest_and_fill()
     coal_stacks = 0
     turtle.select(2)
@@ -76,20 +78,22 @@ local function turtle_back_to_top(schaechte, y_koordinate)
     basics.turnLeft()
     basics.turnLeft()
 
-    for i = 1, schaechte * 4 + 1 do basics.walk() end
+    for i = 1, schaechte * 4  do basics.walk() end
     
     for i = 1, y_koordinate - 5 do basics.walkUp() end
 end
 
-print(
-    "Wenn der erste Block der Abgebaut wird kein cobblestone ist, lege cobbelston in slot1; Tiefe der Seitenschächte: ")
+print("Wenn der erste Block der Abgebaut wird kein cobblestone ist, lege cobbelston in slot1; Tiefe der Seitenschächte: ")
 length = tonumber(read())
-print("Lege Kisten in Slot 2")
-local amount_torches = math.ceil(length / 15)
-print("Lege " .. amount_torches .. " Fackeln in slot 16")
 
 print("Anzahl Seitenschächte pro Seite:")
 local schaechte = tonumber(read())
+
+local ammount_chests = (schaechte * 2)
+print("Lege "..ammount_chests.. " Kisten in Slot 2")
+
+local amount_torches = math.floor(length / 10) + schaechte
+print("Lege " .. amount_torches .. " Fackeln in slot 16")
 
 print("y-koordinat:")
 local y_koordinate = tonumber(read())
@@ -99,7 +103,7 @@ local y_koordinate = tonumber(read())
 
 -- runter zur mine
 for i = 1, y_koordinate - 5 do basics.walkDown() end
-basics.walk()
+
 -- in der mine
 for i = 1, schaechte do
     basics.turnLeft()
@@ -124,3 +128,10 @@ end
 
 turtle_back_to_top(schaechte, y_koordinate)
 
+coal_stacks, mine_empty = ernte_mine.drop_in_storage()
+drop_coal(coal_stacks)
+
+basics.turnLeft()
+basics.turnLeft()
+
+ernte_mine.ernte(schaechte, y_koordinate)
