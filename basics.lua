@@ -1,11 +1,13 @@
 -- How to use: basics = require("basics")
 local function refuel()
-    for i=1,16 do
-        local data = turtle.getItemDetail(i)
-        if data and string.match(data['name'], "coal") then
-            turtle.select(i)
-            turtle.refuel(2)
-            return true
+    if turtle.getFuelLevel() < 10 then
+        for i = 1, 16 do
+            local data = turtle.getItemDetail(i)
+            if data and string.match(data['name'], "coal") then
+                turtle.select(i)
+                turtle.refuel(2)
+                return true
+            end
         end
     end
     return false
@@ -14,9 +16,9 @@ end
 reverseList = {}
 
 local function reverse(steps)
-    if steps ~= nil then steps = #reverseList-steps+1 end
+    if steps ~= nil then steps = #reverseList - steps + 1 end
     if steps == nil then steps = 1 end
-    for i=#reverseList, steps, -1 do
+    for i = #reverseList, steps, -1 do
         reverseList[i](nil, false)
         table.remove(reverseList, i)
     end
@@ -25,11 +27,9 @@ end
 function walk(steps, save)
     save = save or true
     steps = steps or 1
-    for i=1, steps do
+    for i = 1, steps do
         refuel()
-        if save then
-            table.insert(reverseList, walkBack)
-        end
+        if save then table.insert(reverseList, walkBack) end
         local success = turtle.forward()
         while not success do
             turtle.dig()
@@ -41,11 +41,9 @@ end
 function walkUp(steps, save)
     save = save or true
     steps = steps or 1
-    for i=1, steps do
+    for i = 1, steps do
         refuel()
-        if save then
-            table.insert(reverseList, walkDown)
-        end
+        if save then table.insert(reverseList, walkDown) end
         local success = turtle.up()
         while not success do
             turtle.digUp()
@@ -54,13 +52,12 @@ function walkUp(steps, save)
     end
 end
 
-function walkDown(steps,save)
+function walkDown(steps, save)
     save = save or true
     steps = steps or 1
-    for i=1, steps do
-    refuel()
-        if save then
-    table.insert(reverseList, walkUp)end
+    for i = 1, steps do
+        refuel()
+        if save then table.insert(reverseList, walkUp) end
         local success = turtle.down()
         while not success do
             turtle.digDown()
@@ -69,15 +66,12 @@ function walkDown(steps,save)
     end
 end
 
-
 function walkBack(steps, save)
     save = save or true
     steps = steps or 1
-    for i=1, steps do
+    for i = 1, steps do
         refuel()
-        if save then
-        table.insert(reverseList, walk)
-        end
+        if save then table.insert(reverseList, walk) end
         local success = turtle.back()
         while not success do
             turtle.turnLeft()
@@ -93,27 +87,22 @@ end
 function turnLeft(steps, save)
     save = save or true
     steps = steps or 1
-    for i=1, steps do
+    for i = 1, steps do
 
-        if save then
-        table.insert(reverseList, turnRight)
-        end
+        if save then table.insert(reverseList, turnRight) end
         turtle.turnLeft()
-        
 
-    end 
+    end
 end
 
 function turnRight(steps, save)
     save = save or true
     steps = steps or 1
-    for i=1, steps do
-        if save then
-        table.insert(reverseList, turnLeft)
-        end
+    for i = 1, steps do
+        if save then table.insert(reverseList, turnLeft) end
         turtle.turnRight()
 
-    end 
+    end
 end
 
 return {
