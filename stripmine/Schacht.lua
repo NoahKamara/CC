@@ -1,7 +1,7 @@
 basics = require("basics")
 
 local function place_torche()
-    turtle.up()
+    basics.walkUp()
     basics.walkBack()
     basics.turnRight()
     if not turtle.detect() then

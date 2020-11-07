@@ -76,8 +76,8 @@ local function turtle_back_to_top(schaechte, y_koordinate)
     basics.turnLeft()
     basics.turnLeft()
 
-    for i = 1, schaechte * 4 do basics.walk() end
-
+    for i = 1, schaechte * 4 + 1 do basics.walk() end
+    
     for i = 1, y_koordinate - 5 do basics.walkUp() end
 end
 
@@ -99,7 +99,7 @@ local y_koordinate = tonumber(read())
 
 -- runter zur mine
 for i = 1, y_koordinate - 5 do basics.walkDown() end
-
+basics.walk()
 -- in der mine
 for i = 1, schaechte do
     basics.turnLeft()
