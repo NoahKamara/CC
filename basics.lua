@@ -34,7 +34,7 @@ function walk(steps, save)
         while not success do
             success_inspect, data = turtle.inspect()
             if success_inspect then
-                if string.match("turtle", data.name) then
+                if string.match(data["name"], name) then
                     print("found turtle not moving!!!")
                     return "turtle"
                 end
