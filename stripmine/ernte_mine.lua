@@ -49,9 +49,10 @@ local function turtle_back_to_top(schaechte, y_koordinate)
     fuellevel = turtle.getFuelLevel()
     if fuellevel < 10 then Schacht.refuel() end
     basics.turnLeft(2)
+    basics.walkUp()
     for i = 1, schaechte * 4 - 1 do basics.walk() end
 
-    for i = 1, y_koordinate - 5 do basics.walkUp() end
+    for i = 1, y_koordinate - 6 do basics.walkUp() end
 end
 
 -- print("Anzahl Seitenschächte pro Seite:")
@@ -76,9 +77,9 @@ function ernte(schaechte, y_koordinate)
         end
 
         turtle_back_to_top(schaechte, y_koordinate)
+        basics.walk()
         coal_stacks, mine_empty = drop_in_storage()
         drop_coal(coal_stacks)
-
         basics.turnLeft(2)
     until mine_empty
 end

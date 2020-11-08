@@ -32,17 +32,11 @@ local function place_chest_and_fill()
     return coal_stacks
 end
 
--- function zubringer(y_koordinate_start)
---     for i = 1, y_koordinate_start-5 do
---         basics.walkDown()
---     end
--- end
 
 local function turtle_back_to_start(length)
     fuellevel = turtle.getFuelLevel()
     if fuellevel < 10 then Schacht.refuel() end
-    basics.turnLeft()
-    basics.turnLeft()
+    basics.turnLeft(2)
     for i2 = 1, length - 1 do
         if turtle.detect() then turtle.dig() end
         basics.walk()
@@ -76,10 +70,10 @@ local function turtle_back_to_top(schaechte, y_koordinate)
     if fuellevel < 10 then Schacht.refuel() end
     basics.turnLeft()
     basics.turnLeft()
+    basics.walkUp()
+    for i = 1, schaechte * 4 - 1 do basics.walk() end
 
-    for i = 1, schaechte * 4 do basics.walk() end
-
-    for i = 1, y_koordinate - 5 do basics.walkUp() end
+    for i = 1, y_koordinate - 6 do basics.walkUp() end
 end
 
 print(
@@ -133,9 +127,12 @@ end
 
 turtle_back_to_top(schaechte, y_koordinate)
 
+basics.walk()
+
 coal_stacks, mine_empty = ernte_mine.drop_in_storage()
 drop_coal(coal_stacks)
 
 basics.turnLeft(2)
+
 
 ernte_mine.ernte(schaechte, y_koordinate)
