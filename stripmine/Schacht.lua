@@ -1,15 +1,7 @@
 basics = require("basics")
 
-local function basics.walk()
-    local success = false
-    while not success do
-        turtle.dig()
-        success = turtle.forward()
-    end
-end
-
 local function place_torche()
-    turtle.up()
+    basics.walkUp()
     basics.walkBack()
     basics.turnRight()
     if not turtle.detect() then
@@ -24,19 +16,7 @@ local function place_torche()
     turtle.place()
     basics.turnLeft()
     basics.turnLeft()
-    turtle.down()
-end
-
-function refuel()
-    for i = 1, 16 do
-        local data = turtle.getItemDetail(i)
-        if data and string.match(data['name'], "coal") then
-            turtle.select(i)
-            turtle.refuel(15)
-            return true
-        end
-    end
-    return false
+    basics.walkDown()
 end
 
 local function check_ore(success, data)
@@ -67,13 +47,11 @@ local function detect_ore_and_dig()
         if check_ore(success, data) then turtle.dig() end
         basics.turnRight()
     end
-    turtle.down()
+    basics.walkDown()
 end
 
 function schacht(length)
     for i = 1, length do
-        fuellevel = turtle.getFuelLevel()
-        if fuellevel < 10 then refuel() end
         turtle.dig()
         basics.walk()
         turtle.digUp()
