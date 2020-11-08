@@ -92,36 +92,38 @@ print("Lege " .. amount_torches .. " Fackeln in slot 16")
 print("y-koordinat:")
 local y_koordinate = tonumber(read())
 
+print("Turtel gesammtanzahl:")
+local anzahl_turtle = tonumber(read())
+
+print("Turtel Nummer:")
+local turtle_nummer = tonumber(read())
+
+
 -- print("Anzahl der Ebenen:")
 -- local ebene = tonumber(read())
 
 -- runter zur mine
 for i = 1, y_koordinate - 5 do basics.walkDown() end
 
---'''turtle nummer x von y = '''
 
 -- in der mine
 for i = 1, schaechte do
 
-    --'''if (i - x) % y == 0 then '''
-    basics.turnLeft()
-    Schacht.schacht(length)
-    turtle_back_to_start(length)
-    chest()
-    Schacht.schacht(length)
-    turtle_back_to_start(length)
-    chest()
-    basics.turnRight()
+    if (i - turtle_nummer) % anzahl_turtle == 0 then 
+        basics.turnLeft()
+        Schacht.schacht(length)
+        turtle_back_to_start(length)
+        chest()
+        Schacht.schacht(length)
+        turtle_back_to_start(length)
+        chest()
+        basics.turnRight()
+    end
 
     for i = 1, 4 do
-        turtle.dig()
         basics.walk()
                 --geplant :wenn bei walk turtle trifft dann hoch, warten und wieder runter und weiter
         turtle.digUp()
-        -- if i == 1 then
-        --     turtle.select(16)
-        --     turtle.placeUp()
-        -- end
     end
 end
 
