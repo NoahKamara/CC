@@ -64,7 +64,6 @@ local function drop_coal(coal_stacks)
 end
 
 function chest()
-    -- basics.walkBack()
     basics.turnRight()
     coal_stacks = place_chest_and_fill()
     drop_coal(coal_stacks)
@@ -105,8 +104,12 @@ local y_koordinate = tonumber(read())
 -- runter zur mine
 for i = 1, y_koordinate - 5 do basics.walkDown() end
 
+'''turtle nummer x von y = '''
+
 -- in der mine
 for i = 1, schaechte do
+
+    '''if (i - x) / y == 0 then '''
     basics.turnLeft()
     Schacht.schacht(length)
     turtle_back_to_start(length)
@@ -119,11 +122,12 @@ for i = 1, schaechte do
     for i = 1, 4 do
         turtle.dig()
         basics.walk()
+                --geplant :wenn bei walk turtle trifft dann hoch, warten und wieder runter und weiter
         turtle.digUp()
-        if i == 1 then
-            turtle.select(16)
-            turtle.placeUp()
-        end
+        -- if i == 1 then
+        --     turtle.select(16)
+        --     turtle.placeUp()
+        -- end
     end
 end
 
@@ -132,7 +136,6 @@ turtle_back_to_top(schaechte, y_koordinate)
 coal_stacks, mine_empty = ernte_mine.drop_in_storage()
 drop_coal(coal_stacks)
 
-basics.turnLeft()
-basics.turnLeft()
+basics.turnLeft(2)
 
 ernte_mine.ernte(schaechte, y_koordinate)

@@ -1,17 +1,5 @@
 os.loadAPI("basics.lua")
 
--- function refuel()
---     for i = 1, 16 do
---         local data = turtle.getItemDetail(i)
---         if data and string.match(data['name'], "coal") then
---             turtle.select(i)
---             turtle.refuel(5)
---             return true
---         end
---     end
---     return false
--- end
-
 local function zubringer(y_koordinate_start)
     for i = 1, y_koordinate_start - 5 do basics.walkDown() end
 end
@@ -60,8 +48,7 @@ end
 local function turtle_back_to_top(schaechte, y_koordinate)
     fuellevel = turtle.getFuelLevel()
     if fuellevel < 10 then Schacht.refuel() end
-    basics.turnLeft()
-    basics.turnLeft()
+    basics.turnLeft(2)
     for i = 1, schaechte * 4 - 1 do basics.walk() end
 
     for i = 1, y_koordinate - 5 do basics.walkUp() end
@@ -81,8 +68,7 @@ function ernte(schaechte, y_koordinate)
             basics.turnLeft()
             empty_chest()
             basics.turnRight()
-            basics.walk()
-            basics.walk()
+            basics.walk(2)
             basics.turnRight()
             empty_chest()
             basics.turnLeft()
@@ -93,7 +79,6 @@ function ernte(schaechte, y_koordinate)
         coal_stacks, mine_empty = drop_in_storage()
         drop_coal(coal_stacks)
 
-        basics.turnLeft()
-        basics.turnLeft()
+        basics.turnLeft(2)
     until mine_empty
 end
