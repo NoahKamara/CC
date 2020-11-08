@@ -69,7 +69,7 @@ function chest()
     coal_stacks = place_chest_and_fill()
     drop_coal(coal_stacks)
     basics.turnLeft()
-    basics.forward()
+    basics.walk()
 end
 
 local function turtle_back_to_top(schaechte, y_koordinate)
