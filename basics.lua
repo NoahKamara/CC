@@ -33,9 +33,11 @@ function walk(steps, save)
 
         while not success do
             x, data = turtle.inspect()
-            if match.string("turtle", data.name) then
-                print("found turtle not moving!!!")
-                return "turtle"
+            if x then
+                if match.string("turtle", data.name) then
+                    print("found turtle not moving!!!")
+                    return "turtle"
+                end
             end
             turtle.dig()
             success = turtle.forward()
@@ -52,9 +54,11 @@ function walkUp(steps, save)
         local success = turtle.up()
         while not success do
             x, data = turtle.inspectUp()
-            if match.string("turtle", data.name) then
-                print("found turtle not moving!!!")
-                return "turtle"
+            if x then
+                if match.string("turtle", data.name) then
+                    print("found turtle not moving!!!")
+                    return "turtle"
+                end
             end
             turtle.digUp()
             success = turtle.up()
@@ -71,9 +75,11 @@ function walkDown(steps, save)
         local success = turtle.down()
         while not success do
             x, data = turtle.inspectDown()
-            if match.string("turtle", data.name) then
-                print("found turtle not moving!!!")
-                return "turtle"
+            if x then
+                if match.string("turtle", data.name) then
+                    print("found turtle not moving!!!")
+                    return "turtle"
+                end
             end
             turtle.digDown()
             success = turtle.down()
@@ -92,9 +98,11 @@ function walkBack(steps, save)
             turtle.turnLeft()
             turtle.turnLeft()
             x, data = turtle.inspect()
-            if match.string("turtle", data.name) then
-                print("found turtle not moving!!!")
-                return "turtle"
+            if x then
+                if match.string("turtle", data.name) then
+                    print("found turtle not moving!!!")
+                    return "turtle"
+                end
             end
             turtle.dig()
             turtle.turnLeft()
