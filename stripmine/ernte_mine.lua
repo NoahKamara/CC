@@ -78,8 +78,9 @@ function ernte(schaechte, y_koordinate)
 
         turtle_back_to_top(schaechte, y_koordinate)
         basics.walk()
+        basics.turnLeft()
         coal_stacks, mine_empty = drop_in_storage()
         drop_coal(coal_stacks)
-        basics.turnLeft(2)
+        basics.turnLeft()
     until mine_empty
 end

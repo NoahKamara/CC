@@ -40,7 +40,7 @@ local function turtle_back_to_start(length)
     for i2 = 1, length - 1 do
         --if turtle.detect() then turtle.dig() end
         while basics.walk() == "turtle" do
-            os.sleep(10)
+            os.sleep(3)
         end
     end
 end
@@ -64,7 +64,9 @@ function chest()
     coal_stacks = place_chest_and_fill()
     drop_coal(coal_stacks)
     basics.turnLeft()
-    basics.walk()
+    while basics.walk() == "turtle" do
+        os.sleep(3)
+    end
 end
 
 local function turtle_back_to_top(schaechte, y_koordinate)
@@ -131,12 +133,15 @@ end
 
 turtle_back_to_top(schaechte, y_koordinate)
 
+
 basics.walk()
+
+basics.turnLeft()
 
 coal_stacks, mine_empty = ernte_mine.drop_in_storage()
 drop_coal(coal_stacks)
 
-basics.turnLeft(2)
+basics.turnLeft()
 
 
 ernte_mine.ernte(schaechte, y_koordinate)
