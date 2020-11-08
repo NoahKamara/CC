@@ -1,5 +1,5 @@
 
-basics = require("basics")
+os.loadAPI("basics")
 function refuel()
     for i = 1, 16 do
         local data = turtle.getItemDetail(i)

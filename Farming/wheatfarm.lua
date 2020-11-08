@@ -1,4 +1,4 @@
-basics = require("basics")
+os.loadAPI("basics")
 
 local function refuel()
     for i = 1, 16 do

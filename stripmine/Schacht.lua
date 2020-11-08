@@ -1,4 +1,4 @@
-basics = require("basics")
+os.loadAPI("basics")
 
 local function place_torche()
     basics.walkUp()

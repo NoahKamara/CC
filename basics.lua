@@ -1,4 +1,3 @@
--- How to use: basics = require("basics")
 local function refuel()
     if turtle.getFuelLevel() < 10 then
         for i = 1, 16 do
@@ -15,7 +14,7 @@ end
 
 reverseList = {}
 
-local function reverse(steps)
+function reverse(steps)
     if steps ~= nil then steps = #reverseList - steps + 1 end
     if steps == nil then steps = 1 end
     for i = #reverseList, steps, -1 do
@@ -105,13 +104,3 @@ function turnRight(steps, save)
     end
 end
 
-return {
-    refuel = refuel,
-    walk = walk,
-    walkUp = walkUp,
-    walkDown = walkDown,
-    walkBack = walkBack,
-    reverse = reverse,
-    turnRight = turnRight,
-    turnLeft = turnLeft
-}

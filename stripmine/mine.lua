@@ -1,6 +1,6 @@
 os.loadAPI("stripmine/Schacht.lua")
 os.loadAPI("stripmine/ernte_mine.lua")
-basics = require("basics")
+os.loadAPI("basics")
 
 local function place_chest_and_fill()
     coal_stacks = 0
@@ -78,19 +78,20 @@ local function turtle_back_to_top(schaechte, y_koordinate)
     basics.turnLeft()
     basics.turnLeft()
 
-    for i = 1, schaechte * 4  do basics.walk() end
-    
+    for i = 1, schaechte * 4 do basics.walk() end
+
     for i = 1, y_koordinate - 5 do basics.walkUp() end
 end
 
-print("Wenn der erste Block der Abgebaut wird kein cobblestone ist, lege cobbelston in slot1; Tiefe der Seitenschächte: ")
+print(
+    "Wenn der erste Block der Abgebaut wird kein cobblestone ist, lege cobbelston in slot1; Tiefe der Seitenschächte: ")
 length = tonumber(read())
 
 print("Anzahl Seitenschächte pro Seite:")
 local schaechte = tonumber(read())
 
 local ammount_chests = (schaechte * 2)
-print("Lege "..ammount_chests.. " Kisten in Slot 2")
+print("Lege " .. ammount_chests .. " Kisten in Slot 2")
 
 local amount_torches = math.floor(length / 10) + schaechte
 print("Lege " .. amount_torches .. " Fackeln in slot 16")
