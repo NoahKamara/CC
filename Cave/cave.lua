@@ -1,40 +1,41 @@
 
 os.loadAPI("basics.lua")
-function refuel()
-    for i = 1, 16 do
-        local data = turtle.getItemDetail(i)
-        if data and string.match(data['name'], "coal") then
-            turtle.select(i)
-            turtle.refuel(15)
-            return true
-        end
-    end
-    return false
-end
 
-local function basics.walk()
-    local success = false
-    while not success do
-        turtle.dig()
-        success = turtle.forward()
-    end
-end
+-- function refuel()
+--     for i = 1, 16 do
+--         local data = turtle.getItemDetail(i)
+--         if data and string.match(data['name'], "coal") then
+--             turtle.select(i)
+--             turtle.refuel(15)
+--             return true
+--         end
+--     end
+--     return false
+-- end
 
-local function basics.walkUp()
-    local success = false
-    while not success do
-        turtle.digUp()
-        success = turtle.up()
-    end
-end
+-- local function basics.walk()
+--     local success = false
+--     while not success do
+--         turtle.dig()
+--         success = turtle.forward()
+--     end
+-- end
 
-local function basics.walkDown()
-    local success = false
-    while not success do
-        turtle.digDown()
-        success = turtle.down()
-    end
-end
+-- local function basics.walkUp()
+--     local success = false
+--     while not success do
+--         turtle.digUp()
+--         success = turtle.up()
+--     end
+-- end
+
+-- local function basics.walkDown()
+--     local success = false
+--     while not success do
+--         turtle.digDown()
+--         success = turtle.down()
+--     end
+-- end
 
 function find_item(item_name)
     -- findet ersten Slot des strings "item_name" und waehlt ihn aus
