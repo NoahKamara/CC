@@ -51,7 +51,7 @@ end
 
 local function drop_coal(coal_stacks)
     c = coal_stacks
-    for i = 1, 16 do
+    for i = 16, 1, -1 do
         turtle.select(i)
         data = turtle.getItemDetail()
         if data ~= nil then
