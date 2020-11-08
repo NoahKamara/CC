@@ -1,4 +1,4 @@
-os.loadAPI("basics")
+os.loadAPI("basics.lua")
 
 -- function refuel()
 --     for i = 1, 16 do

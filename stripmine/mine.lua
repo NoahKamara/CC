@@ -1,6 +1,6 @@
 os.loadAPI("stripmine/Schacht.lua")
 os.loadAPI("stripmine/ernte_mine.lua")
-os.loadAPI("basics")
+os.loadAPI("basics.lua")
 
 local function place_chest_and_fill()
     coal_stacks = 0

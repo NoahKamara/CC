@@ -1,4 +1,4 @@
-os.loadAPI("basics")
+os.loadAPI("basics.lua")
 
 local function place_torche()
     basics.walkUp()
