@@ -52,7 +52,7 @@ function schacht(length)
     for i = 1, length do
         basics.walk()
         detect_ore_and_dig()
-        if i+5 % 10 == 0 then place_torche() end
+        if (i+5) % 10 == 0 then place_torche() end
     end
 end
 
