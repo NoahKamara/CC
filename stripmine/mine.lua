@@ -125,7 +125,9 @@ for i = 1, schaechte do
     end
 
     for i = 1, 4 do
-        basics.walk()
+        while basics.walk() == "turtle" do
+            os.sleep(3)
+        end
                 --geplant :wenn bei walk turtle trifft dann hoch, warten und wieder runter und weiter
         turtle.digUp()
     end
@@ -134,8 +136,10 @@ end
 turtle_back_to_top(schaechte, y_koordinate)
 
 
-basics.walk()
-
+if basics.walk() == "turtle" then
+    turtle.dig()
+    basics.walk()
+end
 basics.turnLeft()
 
 coal_stacks, mine_empty = ernte_mine.drop_in_storage()
@@ -143,5 +147,6 @@ drop_coal(coal_stacks)
 
 basics.turnLeft()
 
-
-ernte_mine.ernte(schaechte, y_koordinate)
+if turtle_nummer == 1 then
+    ernte_mine.ernte(schaechte, y_koordinate)
+end
