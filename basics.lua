@@ -36,6 +36,7 @@ function walk(steps, save)
             if success_inspect then
                 if string.match(data["name"], "turtle") then
                     print("found turtle not moving!!!")
+                    table.remove(reverseList, #reverseList)
                     return "turtle"
                 end
             end
@@ -53,10 +54,11 @@ function walkUp(steps, save)
         if save then table.insert(reverseList, walkDown) end
         local success = turtle.up()
         while not success do
-            x, data = turtle.inspectUp()
-            if x then
-                if string.match("turtle", data.name) then
+            success_inspect, data = turtle.inspectUp()
+            if success_inspect then
+                if string.match(data["name"], "turtle") then
                     print("found turtle not moving!!!")
+                    table.remove(reverseList, #reverseList)
                     return "turtle"
                 end
             end
@@ -76,8 +78,9 @@ function walkDown(steps, save)
         while not success do
             success_inspect, data = turtle.inspectDown()
             if success_inspect then
-                if string.match("turtle", data.name) then
+                if string.match(data["name"], "turtle") then
                     print("found turtle not moving!!!")
+                    table.remove(reverseList, #reverseList)
                     return "turtle"
                 end
             end
@@ -97,10 +100,11 @@ function walkBack(steps, save)
         while not success do
             turtle.turnLeft()
             turtle.turnLeft()
-            x, data = turtle.inspect()
-            if x then
-                if string.match("turtle", data.name) then
+            success_inspect, data = turtle.inspect()
+            if success_inspect then
+                if string.match(data["name"], "turtle") then
                     print("found turtle not moving!!!")
+                    table.remove(reverseList, #reverseList)
                     return "turtle"
                 end
             end
