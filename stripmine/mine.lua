@@ -93,7 +93,7 @@ local schaechte = tonumber(read())
 local ammount_chests = (schaechte * 2)
 print("Lege " .. ammount_chests .. " Kisten in Slot 2")
 
-local amount_torches = math.floor(length / 10) + schaechte
+local amount_torches = math.floor(length + 5 / 10)
 print("Lege " .. amount_torches .. " Fackeln in slot 16")
 
 print("y-koordinat:")
@@ -120,7 +120,7 @@ for i = 1, schaechte do
         turtle.dig()
         basics.walk()
         turtle.digUp()
-        if i == 2 then
+        if i == 1 then
             turtle.select(16)
             turtle.placeUp()
         end

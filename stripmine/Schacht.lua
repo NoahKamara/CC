@@ -54,9 +54,10 @@ function schacht(length)
     for i = 1, length do
         turtle.dig()
         basics.walk()
+        --geplant :wenn bei walk turtle trifft dann hoch, warten und wieder runter und weiter
         turtle.digUp()
         detect_ore_and_dig()
-        if i % 10 == 0 then place_torche() end
+        if i+5 % 10 == 0 then place_torche() end
     end
 end
 
