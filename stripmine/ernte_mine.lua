@@ -23,7 +23,7 @@ local function empty_chest()
 end
 
 -- dropped items, returned stacks an coal, returned falls wenn ein slot leer war
-local function drop_in_storage()
+function drop_in_storage()
     coal_stacks = 0
     one_empty = false
     for i = 1, 16 do
