@@ -98,12 +98,12 @@ local y_koordinate = tonumber(read())
 -- runter zur mine
 for i = 1, y_koordinate - 5 do basics.walkDown() end
 
-'''turtle nummer x von y = '''
+--'''turtle nummer x von y = '''
 
 -- in der mine
 for i = 1, schaechte do
 
-    '''if (i - x) / y == 0 then '''
+    --'''if (i - x) / y == 0 then '''
     basics.turnLeft()
     Schacht.schacht(length)
     turtle_back_to_start(length)
