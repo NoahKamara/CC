@@ -10,12 +10,10 @@ local function place_torche()
     end
     basics.turnLeft()
     basics.walk()
-    basics.turnRight()
-    basics.turnRight()
+    basics.turnRight(2)
     turtle.select(16)
     turtle.place()
-    basics.turnLeft()
-    basics.turnLeft()
+    basics.turnLeft(2)
     basics.walkDown()
 end
 
@@ -32,7 +30,7 @@ local function detect_ore_and_dig()
             if check_ore(success, data) then turtle.digDown() end
         else
             -- Detect / Dig Up
-            turtle.up()
+            basics.walkUp()
             local success, data = turtle.inspectUp()
             if check_ore(success, data) then turtle.digUp() end
         end
@@ -52,9 +50,7 @@ end
 
 function schacht(length)
     for i = 1, length do
-        turtle.dig()
         basics.walk()
-        turtle.digUp()
         detect_ore_and_dig()
         if i+5 % 10 == 0 then place_torche() end
     end
