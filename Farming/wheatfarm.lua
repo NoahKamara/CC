@@ -36,7 +36,7 @@ local function checkAndGo()
         turtle.digDown()
         plantSeed()
     end
-    turtle.forward()
+    basics.walk()
 end
 
 local function run(size)
