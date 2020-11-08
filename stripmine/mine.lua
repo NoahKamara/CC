@@ -133,12 +133,15 @@ end
 
 turtle_back_to_top(schaechte, y_koordinate)
 
+
 basics.walk()
+
+basics.turnLeft()
 
 coal_stacks, mine_empty = ernte_mine.drop_in_storage()
 drop_coal(coal_stacks)
 
-basics.turnLeft(2)
+basics.turnLeft()
 
 
 ernte_mine.ernte(schaechte, y_koordinate)
