@@ -30,7 +30,13 @@ function walk(steps, save)
         refuel()
         if save then table.insert(reverseList, walkBack) end
         local success = turtle.forward()
+
         while not success do
+            x, data = turtle.inspect()
+            if match.string("turtle", data.name) then
+                print("found turtle not moving!!!")
+                return "turtle"
+            end
             turtle.dig()
             success = turtle.forward()
         end
@@ -45,6 +51,11 @@ function walkUp(steps, save)
         if save then table.insert(reverseList, walkDown) end
         local success = turtle.up()
         while not success do
+            x, data = turtle.inspectUp()
+            if match.string("turtle", data.name) then
+                print("found turtle not moving!!!")
+                return "turtle"
+            end
             turtle.digUp()
             success = turtle.up()
         end
@@ -59,6 +70,11 @@ function walkDown(steps, save)
         if save then table.insert(reverseList, walkUp) end
         local success = turtle.down()
         while not success do
+            x, data = turtle.inspectDown()
+            if match.string("turtle", data.name) then
+                print("found turtle not moving!!!")
+                return "turtle"
+            end
             turtle.digDown()
             success = turtle.down()
         end
@@ -75,6 +91,11 @@ function walkBack(steps, save)
         while not success do
             turtle.turnLeft()
             turtle.turnLeft()
+            x, data = turtle.inspect()
+            if match.string("turtle", data.name) then
+                print("found turtle not moving!!!")
+                return "turtle"
+            end
             turtle.dig()
             turtle.turnLeft()
             turtle.turnLeft()
