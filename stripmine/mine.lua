@@ -38,8 +38,10 @@ local function turtle_back_to_start(length)
     if fuellevel < 10 then Schacht.refuel() end
     basics.turnLeft(2)
     for i2 = 1, length - 1 do
-        if turtle.detect() then turtle.dig() end
-        basics.walk()
+        --if turtle.detect() then turtle.dig() end
+        while basics.walk() == "turtle" do
+            os.sleep(10)
+        end
     end
 end
 
