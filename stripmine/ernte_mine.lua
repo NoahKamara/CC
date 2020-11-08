@@ -62,7 +62,7 @@ local function turtle_back_to_top(schaechte, y_koordinate)
     if fuellevel < 10 then Schacht.refuel() end
     basics.turnLeft()
     basics.turnLeft()
-    for i = 1, schaechte * 4 + 1 do basics.walk() end
+    for i = 1, schaechte * 4 - 1 do basics.walk() end
 
     for i = 1, y_koordinate - 5 do basics.walkUp() end
 end
