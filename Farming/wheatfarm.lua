@@ -1,17 +1,5 @@
 os.loadAPI("basics.lua")
 
-local function refuel()
-    for i = 1, 16 do
-        local data = turtle.getItemDetail(i)
-        if data and string.match(data['name'], "coal") then
-            turtle.select(i)
-            turtle.refuel(10)
-            return true
-        end
-    end
-    return false
-end
-
 local function plantSeed()
     for i = 1, 16 do
         local data = turtle.getItemDetail(i)
@@ -36,7 +24,7 @@ local function checkAndGo()
         turtle.digDown()
         plantSeed()
     end
-    turtle.forward()
+    basics.walk()
 end
 
 local function run(size)
@@ -108,8 +96,6 @@ local size = getFieldSize()
 while true do
     term.clear()
     term.setCursorPos(1, 1)
-    print("REFUELING")
-    refuel()
     print("CHECKING CROPS")
     run(size)
     place_in_chest()
