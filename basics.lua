@@ -30,7 +30,15 @@ function walk(steps, save)
         refuel()
         if save then table.insert(reverseList, walkBack) end
         local success = turtle.forward()
+
         while not success do
+            success_inspect, data = turtle.inspect()
+            if success_inspect then
+                if string.match(data["name"], "turtle") then
+                    print("found turtle not moving!!!")
+                    return "turtle"
+                end
+            end
             turtle.dig()
             success = turtle.forward()
         end
@@ -45,6 +53,13 @@ function walkUp(steps, save)
         if save then table.insert(reverseList, walkDown) end
         local success = turtle.up()
         while not success do
+            x, data = turtle.inspectUp()
+            if x then
+                if string.match("turtle", data.name) then
+                    print("found turtle not moving!!!")
+                    return "turtle"
+                end
+            end
             turtle.digUp()
             success = turtle.up()
         end
@@ -59,6 +74,13 @@ function walkDown(steps, save)
         if save then table.insert(reverseList, walkUp) end
         local success = turtle.down()
         while not success do
+            success_inspect, data = turtle.inspectDown()
+            if success_inspect then
+                if string.match("turtle", data.name) then
+                    print("found turtle not moving!!!")
+                    return "turtle"
+                end
+            end
             turtle.digDown()
             success = turtle.down()
         end
@@ -75,6 +97,13 @@ function walkBack(steps, save)
         while not success do
             turtle.turnLeft()
             turtle.turnLeft()
+            x, data = turtle.inspect()
+            if x then
+                if string.match("turtle", data.name) then
+                    print("found turtle not moving!!!")
+                    return "turtle"
+                end
+            end
             turtle.dig()
             turtle.turnLeft()
             turtle.turnLeft()
