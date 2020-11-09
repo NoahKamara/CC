@@ -74,14 +74,22 @@ local function turtle_back_to_top(schaechte, y_koordinate)
     if fuellevel < 10 then Schacht.refuel() end
     basics.turnLeft()
     basics.turnLeft()
-    basics.walkUp()
+
+    while basics.walkUp() == "turtle" do
+        os.sleep(3)
+    end 
+
     for i = 1, schaechte * 4 - 1 do
         while basics.walk() == "turtle" do
             os.sleep(3)
         end 
     end
 
-    for i = 1, y_koordinate - 6 do basics.walkUp() end
+    for i = 1, y_koordinate - 6 do 
+        while basics.walkUp() == "turtle" do
+            os.sleep(3)
+        end 
+    end
 end
 
 print(
@@ -112,7 +120,11 @@ local turtle_nummer = tonumber(read())
 
 
 -- runter zur mine
-for i = 1, y_koordinate - 5 do basics.walkDown() end
+for i = 1, y_koordinate - 5 do 
+    while basics.walkDown() == "turtle" do
+        os.sleep(3)
+    end 
+end
 
 for i=1, versch do
     while basics.walk() == "turtle" do
@@ -160,4 +172,6 @@ basics.turnLeft()
 
 if turtle_nummer == 1 then
     ernte_mine.ernte(schaechte, y_koordinate)
+else
+    turtle.down()
 end
