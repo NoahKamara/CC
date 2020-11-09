@@ -75,7 +75,11 @@ local function turtle_back_to_top(schaechte, y_koordinate)
     basics.turnLeft()
     basics.turnLeft()
     basics.walkUp()
-    for i = 1, schaechte * 4 - 1 do basics.walk() end
+    for i = 1, schaechte * 4 - 1 do
+        while basics.walk() == "turtle" do
+            os.sleep(3)
+        end 
+    end
 
     for i = 1, y_koordinate - 6 do basics.walkUp() end
 end
@@ -96,6 +100,10 @@ print("Lege " .. amount_torches .. " Fackeln in slot 16")
 print("y-koordinat:")
 local y_koordinate = tonumber(read())
 
+print("Anzahl der Verschiebung (normla 2):")
+local versch = tonumber(read())
+
+
 print("Turtel gesammtanzahl:")
 local anzahl_turtle = tonumber(read())
 
@@ -103,12 +111,14 @@ print("Turtel Nummer:")
 local turtle_nummer = tonumber(read())
 
 
--- print("Anzahl der Ebenen:")
--- local ebene = tonumber(read())
-
 -- runter zur mine
 for i = 1, y_koordinate - 5 do basics.walkDown() end
 
+for i=1, versch do
+    while basics.walk() == "turtle" do
+        os.sleep(3)
+    end
+end
 
 -- in der mine
 for i = 1, schaechte do
@@ -128,22 +138,23 @@ for i = 1, schaechte do
         while basics.walk() == "turtle" do
             os.sleep(3)
         end
-                --geplant :wenn bei walk turtle trifft dann hoch, warten und wieder runter und weiter
-        turtle.digUp()
     end
 end
 
 turtle_back_to_top(schaechte, y_koordinate)
 
 
-if basics.walk() == "turtle" then
-    turtle.dig()
-    basics.walk()
+while basics.walk() == "turtle" do
+    os.sleep(3)
 end
 basics.turnLeft()
 
 coal_stacks, mine_empty = ernte_mine.drop_in_storage()
 drop_coal(coal_stacks)
+
+if turtle.digDown() then
+    ernte_mine.drop_in_storage()
+end
 
 basics.turnLeft()
 

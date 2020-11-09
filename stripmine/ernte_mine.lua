@@ -64,12 +64,23 @@ end
 function ernte(schaechte, y_koordinate)
     repeat
         for i = 1, y_koordinate - 5 do basics.walkDown() end
+
+        for i=1, versch do
+            while basics.walk() == "turtle" do
+                os.sleep(3)
+            end
+        end
+
         basics.walkBack()
         for i = 1, schaechte do
             basics.turnLeft()
             empty_chest()
             basics.turnRight()
-            basics.walk(2)
+            for i2, 2 do
+                while basics.walk() == "turtle" do
+                    os.sleep(3)
+                end
+            end
             basics.turnRight()
             empty_chest()
             basics.turnLeft()
