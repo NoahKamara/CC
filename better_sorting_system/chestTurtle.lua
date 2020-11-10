@@ -21,8 +21,11 @@ function fillChest(count)
     turtle.dropDown(count)
 end
 
+cLastWalked = 0
 function navigate(x, y)
     basics.walk(x)
     basics.turnRight()
     basics.walk(y)
+    cLastWalked = y + x + 1
 end
+
