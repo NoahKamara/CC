@@ -21,6 +21,13 @@ function fillChest(count)
     turtle.dropDown(count)
 end
 
+function dropRest()
+    for i = 2, 16 do
+        turtle.select(1)
+        turtle.dropDown()
+    end
+end
+
 cLastWalked = 0
 function navigate(x, y)
     basics.walk(x)
@@ -29,3 +36,9 @@ function navigate(x, y)
     cLastWalked = y + x + 1
 end
 
+function getCommand(x, y, count)
+    navigate(x, y)
+    fillChest(count)
+    basics.reverse(cLastWalked)
+    basics.walkBack(1)
+end
