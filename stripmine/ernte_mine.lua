@@ -84,7 +84,7 @@ function ernte(schaechte, y_koordinate)
             basics.turnLeft()
             empty_chest()
             basics.turnRight()
-            for i2, 2 do
+            for i2=1, 2 do
                 while basics.walk() == "turtle" do
                     os.sleep(3)
                 end
