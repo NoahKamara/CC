@@ -45,7 +45,7 @@ local function drop_coal(coal_stacks)
     end
 end
 
-local function turtle_back_to_top(schaechte, y_koordinate)
+local function turtle_back_to_top(schaechte, y_koordinate, versch)
     fuellevel = turtle.getFuelLevel()
     if fuellevel < 10 then Schacht.refuel() end
     basics.turnLeft(2)
@@ -56,6 +56,12 @@ local function turtle_back_to_top(schaechte, y_koordinate)
 
     for i = 1, schaechte * 4 - 2 do basics.walk() end
 
+    for i=1, versch do
+        while basics.walk() == "turtle" do
+            os.sleep(3)
+        end
+    end
+
     for i = 1, y_koordinate - 6 do basics.walkUp() end
 end
 
@@ -65,7 +71,7 @@ end
 -- print("y-koordinat:")
 -- local y_koordinate = tonumber(read())
 
-function ernte(schaechte, y_koordinate)
+function ernte(schaechte, y_koordinate, versch)
     repeat
         for i = 1, y_koordinate - 5 do
             while basics.walkDown() == "turtle" do
@@ -95,7 +101,7 @@ function ernte(schaechte, y_koordinate)
             for i = 1, 2 do basics.walk() end
         end
 
-        turtle_back_to_top(schaechte, y_koordinate)
+        turtle_back_to_top(schaechte, y_koordinate, versch)
         basics.walk()
         basics.turnLeft()
         coal_stacks, mine_empty = drop_in_storage()
