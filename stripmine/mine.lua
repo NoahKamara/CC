@@ -85,6 +85,12 @@ local function turtle_back_to_top(schaechte, y_koordinate)
         end 
     end
 
+    for i=1, versch do
+        while basics.walk() == "turtle" do
+            os.sleep(3)
+        end
+    end
+
     for i = 1, y_koordinate - 6 do 
         while basics.walkUp() == "turtle" do
             os.sleep(3)
@@ -171,7 +177,7 @@ end
 basics.turnLeft()
 
 if turtle_nummer == 1 then
-    ernte_mine.ernte(schaechte, y_koordinate)
+    ernte_mine.ernte(schaechte, y_koordinate, versch)
 else
     turtle.down()
 end
