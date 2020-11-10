@@ -1,6 +1,4 @@
-function getMaxItemsInChest()
-    return (turtle.getItemCount() + turtle.getItemSpace()) * 24
-end
+os.loadAPI("basics.lua")
 
 function fillChest(count)
     break_condition = true
@@ -23,3 +21,8 @@ function fillChest(count)
     turtle.dropDown(count)
 end
 
+function navigate(x, y)
+    basics.walk(x)
+    basics.turnRight()
+    basics.walk(y)
+end
