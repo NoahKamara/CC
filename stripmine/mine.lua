@@ -69,7 +69,7 @@ function chest()
     end
 end
 
-local function turtle_back_to_top(schaechte, y_koordinate)
+local function turtle_back_to_top(schaechte, y_koordinate, versch)
     fuellevel = turtle.getFuelLevel()
     if fuellevel < 10 then Schacht.refuel() end
     basics.turnLeft()
@@ -159,7 +159,7 @@ for i = 1, schaechte do
     end
 end
 
-turtle_back_to_top(schaechte, y_koordinate)
+turtle_back_to_top(schaechte, y_koordinate, versch)
 
 
 while basics.walk() == "turtle" do
