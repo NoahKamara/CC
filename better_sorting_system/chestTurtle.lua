@@ -23,7 +23,7 @@ end
 
 function dropRest()
     for i = 2, 16 do
-        turtle.select(1)
+        turtle.select(i)
         turtle.dropDown()
     end
 end
