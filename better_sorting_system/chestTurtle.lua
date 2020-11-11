@@ -42,3 +42,4 @@ function getCommand(x, y, count)
     basics.reverse(cLastWalked)
     basics.walkBack(1)
 end
+
