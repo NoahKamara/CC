@@ -3,13 +3,15 @@ function empty_input_chest()
     for i = 2, 16 do
         turtle.select(i)
         turtle.suck()
+        turtle.getItemCount()
+        turtle.getItemDetail()
     end
 end
 
 function drop_in_input_chest()
     for i = 2, 16 do
         turtle.select(i)
-        turtle.suck()
+        turtle.drop()
     end
 end
 
