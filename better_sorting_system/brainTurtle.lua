@@ -87,12 +87,32 @@ function drop()
         dropSlotsWithSameItem(data.name)
     end
 end
--- Tests
--- save(1, 2, 3, "ore", 5, 10)
--- rows = load()
--- print(rows[1].x)
 
-function mainStore()
-    rows = load()
-    while true do while turtle.suck() do end drop() end
+function findFittingChest(rows_with_ore, count)
+    for i, row in pairs(rows_with_ore) do
+        if checkForSpace(row) >= count then return row end
+    end
+    return 0
+end
+
+function mainBrain()
+    while true do
+        rows = load()
+        -- empfangen
+        local item, count = listenForElevator()
+        local rows_with_item = findLocations(item)
+        local good_row = findFittingChest(rows_with_item, count)
+        if good_row == 0 then good_row = useEmptyChest(item, count) end
+        local success1 = infoToElevator(good_row.z)
+        local success2 = infoToChestTurtle(good_row.z, good_row.x, good_row.y,
+                                           count)
+        if not success1 or not success2 then
+            print("Error! Notaus turtle antwortet nicht")
+            print("ElevatorTurtle Success:", success1)
+            print("ChestTurtle Success:", success2)
+            break
+        end
+        good_row.count = good_row.count + count
+        save(good_row) -- muss noch richtig reihe ändern
+    end
 end
