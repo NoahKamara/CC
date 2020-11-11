@@ -31,4 +31,4 @@ function drop_in_floorturtle(inventory_slots)
 end
 
 cur_floor = 0
-hight_of_floor
+hight_of_floor = 1
