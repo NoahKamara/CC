@@ -1,30 +1,42 @@
 function save(x, y, z, item, count, mCount)
-    file = fs.open("database", fs.exists("database") and "a" or "w")
+
+    local file = fs.open("database", fs.exists("database") and "a" or "w")
     file.write(makeCSV({x, y, z, item, count, mCount}))
     file.close()
 end
-function load()
-    file = fs.open("databse", "r")
-    file.readLine()
-    
+
+local function load()
+    local rows = {}
+    local file = fs.open("database", "r")
+    local l = file.readLine()
+    while l ~= nil do
+        table.insert(rows, lineToObject(line(l)))
+        l = file.readLine()
+    end
+    file.close()
+    return rows
 end
+
 function makeCSV(table)
-    x = ""
+    local x = ""
     for i = 1, #table do
         x = x .. table[i]
-        if i == #table then break end
+        if i == #table then
+            x = x .. "\n"
+            break
+        end
         x = x .. ","
     end
     return x
 end
 
 function line(l)
-    values = {}
-    lastComma = 0
+    local values = {}
+    local lastComma = 0
     for i = 1, #l do
-        str = l:sub(i, i)
+        local str = l:sub(i, i)
         if str == ',' then
-            z = l:sub(lastComma + 1, i - 1)
+            local z = l:sub(lastComma + 1, i - 1)
             table.insert(values, z)
             lastComma = i
         end
@@ -44,13 +56,43 @@ function lineToObject(values)
     return x
 end
 
-function getOreLocation(ore) file = fs.open("database", "r") end
+function addRowToDB(row)
+    table.insert(rows, row)
+    save(row)
+end
 
+function findLocations(ore)
+    local rows_with_ore = {}
+    for i, v in ipairs(rows) do
+        if string.match(v, ore) then table.insert(rows_with_ore, v) end
+    end
+    return rows_with_ore
+end
+
+function checkForSpace(row) return row.mCount - row.count end
+
+function dropSlotsWithSameItem(ore)
+    for i = 1, 16 do
+        turtle.select(i)
+        if string.match(turtle.getItemDetail(i).name, ore) then
+            turtle.drop()
+        end
+    end
+end
+
+function drop()
+    for i = 1, 16 do
+        turtle.select(i)
+        local data = turtle.getItemDetail(i)
+        dropSlotsWithSameItem(data.name)
+    end
+end
 -- Tests
-save(1,2,3,"ore",5,10)
+-- save(1, 2, 3, "ore", 5, 10)
+-- rows = load()
+-- print(rows[1].x)
 
-x = line(makeCSV({1, 2, 3, 4, 5, 6, 7, 8, 9}))
-
-row = lineToObject(x)
-
-print(row.item)
+function mainStore()
+    rows = load()
+    while true do while turtle.suck() do end drop() end
+end
