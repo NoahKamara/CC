@@ -37,12 +37,21 @@ function drop_in_floorturtle(inventory_slots)
     end
 end
 
-function deliver(inventory)
-    for 
-        to_floor(cur_floor, inventory["z"])
+function deliver_to_floor(inventory)
+    zielebenen = {}
+    for i in inventory do
+        z1 = 0 
+        for en, z in ipairs(zielbenen) do
+            if inventory[i].z == z then 
+                break
+            else 
+                z1 = z1 + 1 
+            end
+        end  
+        if z1 == en then 
+            table.insert(zielebenen, inventory.i ["z"])
+        end
+    end
+    return zielebenen
+end
 
-
-
-
-cur_floor = 0
-hight_of_floor = 1
