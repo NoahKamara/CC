@@ -161,7 +161,7 @@ function mainBrain()
             table.insert(rows, good_row)
         end
 
-        rewrite(rows)
+        -- rewrite(rows)
     end
 end
 
