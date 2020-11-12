@@ -8,7 +8,7 @@ end
 function rewrite(rows)
     fs.delete("database")
     for x, row in ipairs(rows) do
-        save(row.x, row.y, row.item, row.count, row.mCount)
+        if row then save(row.x, row.y, row.item, row.count, row.mCount) end
     end
 end
 
@@ -121,18 +121,18 @@ end
 
 function listenForElevator()
     print("Item: ")
-    item = read()
+    local item = read()
     print("Count: ")
-    count = tonumber(read())
+    local count = tonumber(read())
     print("mCount")
-    mCount = tonumber(read())
+    local mCount = tonumber(read())
     return item, count, mCount
 end
 
 function infoToElevator(z) print("An ElevatorTurtle gehe ebene: ", z) end
 
 function infoToChestTurtle(z, x, y, count)
-    print("ChestTurtle" .. z .. "gehe zu ", x, y, "Count: ", count)
+    print("ChestTurtle " .. z .. " gehe zu ", x, y, "Count: ", count)
 end
 function mainBrain()
     while true do
