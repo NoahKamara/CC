@@ -7,7 +7,9 @@ end
 
 function rewrite(rows)
     fs.delete("database")
-    for row in rows do save(row.x, row.y, row.item, row.count, row.mCount) end
+    for x, row in ipairs(rows) do
+        save(row.x, row.y, row.item, row.count, row.mCount)
+    end
 end
 
 local function load()
@@ -64,10 +66,6 @@ function lineToObject(values)
     return x
 end
 
-function addRowToDB(row)
-    table.insert(rows, row)
-    save(row)
-end
 
 function findLocations(item)
     local rows_with_item = {}
