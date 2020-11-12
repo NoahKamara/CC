@@ -15,12 +15,14 @@ end
 local function load()
     local rows = {}
     local file = fs.open("database", "r")
-    local l = file.readLine()
-    while l ~= nil do
-        table.insert(rows, lineToObject(line(l)))
-        l = file.readLine()
+    if file then
+        local l = file.readLine()
+        while l ~= nil do
+            table.insert(rows, lineToObject(line(l)))
+            l = file.readLine()
+        end
+        file.close()
     end
-    file.close()
     return rows
 end
 
@@ -65,7 +67,6 @@ function lineToObject(values)
     x["mCount"] = tonumber(values[6])
     return x
 end
-
 
 function findLocations(item)
     local rows_with_item = {}
