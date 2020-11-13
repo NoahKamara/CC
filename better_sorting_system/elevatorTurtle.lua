@@ -55,3 +55,14 @@ function deliver_to_floor(inventory)
     return zielebenen
 end
 
+function go_to_closest_floor( cur_floor, zielebenen )
+    for z = 1, #zielebenen do
+        smallest_abstand = 100
+        for i in zielebenen do
+            if abs(cur_floor - i) < smallest_abstand then
+                smallest_abstand = i
+            end
+        end
+        to_floor(cur_floor, samllest_abstand )
+    end
+end
