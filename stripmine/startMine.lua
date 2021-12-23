@@ -1,5 +1,4 @@
-local modem = peripheral.wrap("left")
-modem.open(1)
+
 -- rep, fd, fdd ,dist, message = os.pullEvent("modem_message")
 -- print(message)
 
@@ -24,14 +23,17 @@ local versch = read()
 print("Turtel gesammtanzahl:")
 local anzahl_turtle = read()
 
+local modem = peripheral.wrap("left")
+modem.open(1)
+
 while true do 
     local turtle_nummer = 1
     rep, fd, fdd ,  dist, message = os.pullEvent("modem_message")
     if message == "ready" then
-        
+        print("starts programm")
         modem.transmit( 3,1, "fastmine")
         
-
+        os.sleep(3)
         -- print("Wenn der erste Block der Abgebaut wird kein cobblestone ist, lege cobbelston in slot1; Tiefe der Seitenschächte: ")
         -- length = read()
         modem.transmit( 3,1, lenght)
