@@ -98,31 +98,43 @@ local function turtle_back_to_top(schaechte, y_koordinate, versch)
     end
 end
 
-print(
-    "Wenn der erste Block der Abgebaut wird kein cobblestone ist, lege cobbelston in slot1; Tiefe der Seitenschächte: ")
-length = tonumber(read())
+-- print(
+--     "Wenn der erste Block der Abgebaut wird kein cobblestone ist, lege cobbelston in slot1; Tiefe der Seitenschächte: ")
+-- length = tonumber(read())
+rep, fd, fdd, dist, length_str = os.pullEvent("modem_message")
+length = tonumber(length_str)
 
-print("Anzahl Seitenschächte pro Seite:")
-local schaechte = tonumber(read())
+-- print("Anzahl Seitenschächte pro Seite:")
+-- local schaechte = tonumber(read())
+rep1, fd1, fdd1, dist1, schaechte_STR = os.pullEvent("modem_message")
+schaechte = tonumber(schaechte_str)
 
-local ammount_chests = (schaechte * 2)
-print("Lege " .. ammount_chests .. " Kisten in Slot 2")
+-- local ammount_chests = (schaechte * 2)
+-- print("Lege " .. ammount_chests .. " Kisten in Slot 2")
 
-local amount_torches = math.floor(length + 5 / 10)
-print("Lege " .. amount_torches .. " Fackeln in slot 16")
+-- local amount_torches = math.floor(length + 5 / 10)
+-- print("Lege " .. amount_torches .. " Fackeln in slot 16")
 
-print("y-koordinat:")
-local y_koordinate = tonumber(read())
+-- print("y-koordinat:")
+-- local y_koordinate = tonumber(read())
+rep, fd, fdd, dist, y_koordinate_str = os.pullEvent("modem_message")
+y_koordinate = tonumber(y_koordinate_str)
 
-print("Anzahl der Verschiebung (normla 2):")
-local versch = tonumber(read())
+-- print("Anzahl der Verschiebung (normla 2):")
+-- local versch = tonumber(read())
+rep1, fd1, fdd1, dist1, versch_str = os.pullEvent("modem_message")
+versch = tonumber(versch_str)
 
+-- print("Turtel gesammtanzahl:")
+-- local anzahl_turtle = tonumber(read())
+rep, fd, fdd, dist, anzahl_turtle_str = os.pullEvent("modem_message")
+anzahl_turtle = tonumber(anzahl_turtle_str)
 
-print("Turtel gesammtanzahl:")
-local anzahl_turtle = tonumber(read())
+-- print("Turtel Nummer:")
+-- local turtle_nummer = tonumber(read())
+rep, fd, fdd, dist, turtle_nummer_str = os.pullEvent("modem_message")
+turtle_nummer = tonumber(turtle_nummer_str)
 
-print("Turtel Nummer:")
-local turtle_nummer = tonumber(read())
 
 
 -- runter zur mine
