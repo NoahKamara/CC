@@ -61,7 +61,7 @@ while true do
 
         modem.transmit( 3,1, turtle_nummer)
 
-        turtle_nummer = trutle_nummer + 1
+        turtle_nummer = turtle_nummer + 1
     end
     if (turtle_nummer == anzahl_turtle + 1) then
         break
