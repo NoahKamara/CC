@@ -1,5 +1,5 @@
 local modem = peripheral.wrap("right")
-
+modem.open(3)
 
 modem.transmit(1, 3, "ready")
 

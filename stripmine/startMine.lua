@@ -31,16 +31,18 @@ while true do
     rep, fd, fdd ,  dist, message = os.pullEvent("modem_message")
     if message == "ready" then
         print("starts programm")
-        modem.transmit( 3,1, "fastmine")
+        modem.transmit( 3,1, "stripmine/fastmine")
         
         os.sleep(3)
         -- print("Wenn der erste Block der Abgebaut wird kein cobblestone ist, lege cobbelston in slot1; Tiefe der Seitenschächte: ")
         -- length = read()
         modem.transmit( 3,1, lenght)
+        print("length", lenght)
 
         -- print("Anzahl Seitenschächte pro Seite:")
         -- local schaechte = read()
         modem.transmit( 3,1, schaechte)
+        print("schaechte", schaechte)
 
         -- local ammount_chests = (schaechte * 2)
         -- print("Lege " .. ammount_chests .. " Kisten in Slot 2")
@@ -51,10 +53,13 @@ while true do
         -- print("y-koordinat:")
         -- local y_koordinate = read()
         modem.transmit( 3,1, y_koordinate)
+        print("y_koordinate", y_koordinate)
+
 
         -- print("Anzahl der Verschiebung (normla 2):")
         -- local versch = read()
         modem.transmit( 3,1, versch)
+        print("versch", versch)
 
 
         -- print("Turtel gesammtanzahl:")
