@@ -1,14 +1,14 @@
 
-print("Kobble in slot 4")
+print("Kobble in slot 1")
 print("KOhle in slot 5")
 
-print("Anzahl der Turtle in slot 1")
+print("Anzahl der Turtle in slot 2")
 local turtleAmmount = tonumber(read())
 
-print("Anzahl der Kisten in slot 2")
+print("Anzahl der Kisten in slot 3")
 local chestAmmount = tonumber(read())
 
-print("Anzahl der Fackeln in slot 3")
+print("Anzahl der Fackeln in slot 4")
 local torcheAmmount = tonumber(read())
 
 
@@ -20,13 +20,13 @@ for i = 1, turtleAmmount do
 
     for i=2, 5 do
         if i == 2 then
-            drop = math.floor(torcheAmmount / turtleAmmount)
-        elseif i == 3 then 
-            drop = math.floor(chestAmmount / turtleAmmount)
-        elseif i == 4 then 
-            drop = 1
-        elseif i == 5 then 
             drop = 20
+        elseif i == 3 then 
+            drop = math.floor(torcheAmmount / turtleAmmount)
+        elseif i == 4 then 
+            drop = math.floor(chestAmmount / turtleAmmount)
+        elseif i == 5 then 
+            drop = 1
         end
 
         turtle.select(i)
