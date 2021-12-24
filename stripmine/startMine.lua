@@ -26,8 +26,9 @@ local anzahl_turtle = read()
 local modem = peripheral.wrap("left")
 modem.open(1)
 
+local turtle_nummer = 1
 while true do 
-    local turtle_nummer = 1
+    
     rep, fd, fdd ,  dist, message = os.pullEvent("modem_message")
     if message == "ready" then
         print("starts programm")
