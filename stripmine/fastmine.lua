@@ -135,7 +135,12 @@ anzahl_turtle = tonumber(anzahl_turtle_str)
 rep, fd, fdd, dist, turtle_nummer_str = os.pullEvent("modem_message")
 turtle_nummer = tonumber(turtle_nummer_str)
 
+'''check inventory'''
 
+--move one 
+while basics.walk() == "turtle" do
+    os.sleep(3)
+end
 
 -- runter zur mine
 for i = 1, y_koordinate - 5 do 
