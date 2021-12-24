@@ -106,7 +106,7 @@ length = tonumber(length_str)
 
 -- print("Anzahl Seitenschächte pro Seite:")
 -- local schaechte = tonumber(read())
-rep1, fd1, fdd1, dist1, schaechte_STR = os.pullEvent("modem_message")
+rep1, fd1, fdd1, dist1, schaechte_str = os.pullEvent("modem_message")
 schaechte = tonumber(schaechte_str)
 
 -- local ammount_chests = (schaechte * 2)
