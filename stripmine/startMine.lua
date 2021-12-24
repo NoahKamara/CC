@@ -36,8 +36,8 @@ while true do
         os.sleep(3)
         -- print("Wenn der erste Block der Abgebaut wird kein cobblestone ist, lege cobbelston in slot1; Tiefe der Seitenschächte: ")
         -- length = read()
-        modem.transmit( 3,1, lenght)
-        print("length", lenght)
+        modem.transmit( 3,1, length)
+        print("length", length)
 
         -- print("Anzahl Seitenschächte pro Seite:")
         -- local schaechte = read()
