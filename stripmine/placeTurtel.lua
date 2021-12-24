@@ -13,26 +13,23 @@ local torcheAmmount = tonumber(read())
 
 
 for i = 1, turtleAmmount do     
-    turtle.select(0)
+    turtle.select(1)
     while (turtle.place() == false) do
         os.sleep(3)
     end
 
-    for i=1, 5 do
-        if i == 1 then
-            drop = 1
-        elseif i == 2 then
+    for i=2, 5 do
+        if i == 2 then
             drop = math.floor(torcheAmmount / turtleAmmount)
         elseif i == 3 then 
             drop = math.floor(chestAmmount / turtleAmmount)
         elseif i == 4 then 
             drop = 1
-        end
         elseif i == 5 then 
             drop = 20
         end
 
         turtle.select(i)
-        turtle.drop()
+        turtle.drop(drop)
     end
 end

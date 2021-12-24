@@ -65,8 +65,10 @@ while true do
         -- print("Turtel gesammtanzahl:")
         -- local anzahl_turtle = read()
         modem.transmit( 3,1, anzahl_turtle)
+        print("anzahl_turtle", anzahl_turtle)
 
         modem.transmit( 3,1, turtle_nummer)
+        print("turtle_nummer", turtle_nummer)
 
         turtle_nummer = turtle_nummer + 1
     end

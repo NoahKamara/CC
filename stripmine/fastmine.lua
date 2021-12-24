@@ -134,8 +134,9 @@ anzahl_turtle = tonumber(anzahl_turtle_str)
 -- local turtle_nummer = tonumber(read())
 rep, fd, fdd, dist, turtle_nummer_str = os.pullEvent("modem_message")
 turtle_nummer = tonumber(turtle_nummer_str)
+print(turtle_nummer)
 
-'''check inventory'''
+--check inventory
 
 --move one 
 while basics.walk() == "turtle" do
