@@ -12,7 +12,7 @@ print("Anzahl der Fackeln in slot 3")
 local torcheAmmount = tonumber(read())
 
 
-for turtleNumber = 1, turtleAmmount do     
+for turtleNumber = 1, turtleAmmount -1 do     
     turtle.select(turtleNumber+4)
     while (turtle.place() == false) do
         os.sleep(3)
@@ -33,3 +33,7 @@ for turtleNumber = 1, turtleAmmount do
         turtle.drop(drop)
     end
 end
+
+turtle.forward()
+
+shell.run("stripmine/startup.lua")
