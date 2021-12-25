@@ -1,3 +1,5 @@
+os.loadAPI("basics.lua")
+
 
 print("Kobble in slot 1")
 print("KOhle in slot 4")
@@ -34,6 +36,6 @@ for turtleNumber = 1, turtleAmmount -1 do
     end
 end
 
-turtle.forward()
+basics.walk()
 
 shell.run("stripmine/startup.lua")
