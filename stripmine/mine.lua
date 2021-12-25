@@ -34,8 +34,8 @@ end
 
 
 local function turtle_back_to_start(length)
-    fuellevel = turtle.getFuelLevel()
-    if fuellevel < 10 then Schacht.refuel() end
+    --fuellevel = turtle.getFuelLevel()
+    --if fuellevel < 10 then Schacht.refuel() end
     basics.turnLeft(2)
     for i2 = 1, length - 1 do
         --if turtle.detect() then turtle.dig() end
@@ -70,8 +70,8 @@ function chest()
 end
 
 local function turtle_back_to_top(schaechte, y_koordinate, versch)
-    fuellevel = turtle.getFuelLevel()
-    if fuellevel < 10 then Schacht.refuel() end
+    --fuellevel = turtle.getFuelLevel()
+    --if fuellevel < 10 then Schacht.refuel() end
     basics.turnLeft()
     basics.turnLeft()
 

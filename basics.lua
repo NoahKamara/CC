@@ -4,7 +4,15 @@ local function refuel()
             local data = turtle.getItemDetail(i)
             if data and string.match(data['name'], "coal") then
                 turtle.select(i)
-                turtle.refuel(2)
+                turtle.refuel(1)
+                return true
+            end
+        end
+        for i = 1, 16 do
+            local data = turtle.getItemDetail(i)
+            if data and string.match(data['name'], "planks") then
+                turtle.select(i)
+                turtle.refuel(4)
                 return true
             end
         end

@@ -46,8 +46,8 @@ local function drop_coal(coal_stacks)
 end
 
 local function turtle_back_to_top(schaechte, y_koordinate, versch)
-    fuellevel = turtle.getFuelLevel()
-    if fuellevel < 10 then Schacht.refuel() end
+    --fuellevel = turtle.getFuelLevel()
+    --if fuellevel < 10 then Schacht.refuel() end
     basics.turnLeft(2)
 
     while basics.walkUp() == "turtle" do
