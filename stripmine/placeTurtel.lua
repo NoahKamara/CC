@@ -2,7 +2,7 @@ os.loadAPI("basics.lua")
 
 
 print("Kobble in slot 1")
-print("KOhle in slot 4")
+print("Treibstoff in slot 4")
 
 print("Anzahl der Turtle in slot 5 ff")
 local turtleAmmount = tonumber(read())
@@ -13,6 +13,8 @@ local chestAmmount = tonumber(read())
 print("Anzahl der Fackeln in slot 3")
 local torcheAmmount = tonumber(read())
 
+print("Starttreibstoff pro Turtle in slot 4")
+local treibstoff = tonumber(read())
 
 for turtleNumber = 1, turtleAmmount -1 do     
     turtle.select(turtleNumber+4)
@@ -28,7 +30,7 @@ for turtleNumber = 1, turtleAmmount -1 do
         elseif i == 3 then 
             drop = math.floor( torcheAmmount / turtleAmmount)
         elseif i == 4 then 
-            drop = 1
+            drop = treibstoff
         end
 
         turtle.select(i)
