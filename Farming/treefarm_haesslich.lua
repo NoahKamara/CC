@@ -1,3 +1,4 @@
+
 -- {program="aTreeFarm",version="1.04b",date="2018-01-07"}
 ---------------------------------------
 -- aTreeFarm           by Kaikaku
@@ -89,7 +90,7 @@ local function gf(n)
 end
 local function gb(n)
     if n == nil then n = 1 end
-    for i = 1, n, 1 do while not basics.walkBack() do end end
+    for i = 1, n, 1 do while not turtle.back() do end end
 end
 local function gu(n)
     if n == nil then n = 1 end
@@ -101,11 +102,11 @@ local function gd(n)
 end
 local function gl(n)
     if n == nil then n = 1 end
-    for i = 1, n, 1 do while not basics.turnLeft() do end end
+    for i = 1, n, 1 do while not turtle.turnLeft() do end end
 end
 local function gr(n)
     if n == nil then n = 1 end
-    for i = 1, n, 1 do while not basics.turnRight() do end end
+    for i = 1, n, 1 do while not turtle.turnRight() do end end
 end
 local function pf(n)
     -- moves backwards if n>1
