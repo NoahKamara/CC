@@ -20,7 +20,7 @@ for turtleNumber = 1, turtleAmmount do
 
     for i=1, 4 do
         if i == 1 then
-            drop = 20
+            drop = 2
         elseif i == 2 then 
             drop = math.floor( chestAmmount / turtleAmmount)
         elseif i == 3 then 
