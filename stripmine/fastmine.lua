@@ -199,5 +199,5 @@ if turtle_nummer == 1 then
 else
     basics.turnLeft()
     turtle.dig()
-    basics.forward()
+    basics.walk()
 end

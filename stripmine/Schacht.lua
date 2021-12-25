@@ -20,6 +20,7 @@ end
 local function check_ore(success, data)
     if not success then return false end
     if string.match(data["name"], "core") then return string.match(data["name"], "core") end
+    if string.match(data["name"], "ic2") then return string.match(data["name"], "ic2") end
     return string.match(data["name"], "ore")
 end
 

@@ -11,7 +11,7 @@ local schaechte = read()
 local ammount_chests = (schaechte * 2)
 print("Lege " .. ammount_chests .. " Kisten in Slot 2")
 
-local amount_torches = math.floor(length + 5 / 10)
+local amount_torches = math.floor(length / 4) * schaechte * 2
 print("Lege " .. amount_torches .. " Fackeln in slot 3")
 
 print("y-koordinat:")
