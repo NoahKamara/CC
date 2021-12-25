@@ -197,5 +197,7 @@ basics.turnLeft()
 if turtle_nummer == 1 then
     ernte_mine.ernte(schaechte, y_koordinate, versch)
 else
-    turtle.down()
+    basics.turnLeft()
+    turtle.dig()
+    basics.forward()
 end
