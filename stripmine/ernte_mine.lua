@@ -18,7 +18,7 @@ function drop_in_storage()
         turtle.select(i)
         data = turtle.getItemDetail()
         if data ~= nil then
-            if string.match(data["name"], "coal") ~= "coal" then
+            if (string.match(data["name"], "coal") ~= "coal" and string.match(data["name"], "planks") ~= "planks")  then
                 turtle.drop()
             elseif string.match(data["name"], "coal") == "coal" then
                 coal_stacks = coal_stacks + 1
