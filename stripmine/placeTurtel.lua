@@ -34,8 +34,7 @@ for turtleNumber = 1, turtleAmmount do
             drop = math.floor( torcheAmmount / (turtleAmmount + 1))
         end
         
-        turtle.select(i)
-        turtle.drop(drop)
+       
 
         if i==4 then 
             stack = stack - treibstoff
@@ -50,7 +49,10 @@ for turtleNumber = 1, turtleAmmount do
                 turtle.drop(math.abs(stack))
                 stack = 64 - math.abs(stack)
             end
-        end
+        else
+            turtle.select(i)
+            turtle.drop(drop)
+        end    
     end
 end
 
