@@ -1,21 +1,25 @@
-local function refuel()
-    if turtle.getFuelLevel() < 10 then
-        for i = 1, 16 do
-            local data = turtle.getItemDetail(i)
-            if data and string.match(data['name'], "coal") then
-                turtle.select(i)
-                turtle.refuel(1)
-                return true
+local function refuel(preferedFueltype)
+    preferedFueltype = preferedFueltype or "coal"
+    for i=1, 2 do
+        if turtle.getFuelLevel() < 10 then
+            for i = 1, 16 do
+                local data = turtle.getItemDetail(i)
+                if data and string.match(data['name'], "coal") and preferedFueltype == "coal" or preferedFueltype then
+                    turtle.select(i)
+                    turtle.refuel(1)
+                    return true
+                end
+            end
+            for i = 1, 16 do
+                local data = turtle.getItemDetail(i)
+                if data and string.match(data['name'], "planks") and preferedFueltype == "planks" or preferedFueltype then
+                    turtle.select(i)
+                    turtle.refuel(4)
+                    return true
+                end
             end
         end
-        for i = 1, 16 do
-            local data = turtle.getItemDetail(i)
-            if data and string.match(data['name'], "planks") then
-                turtle.select(i)
-                turtle.refuel(4)
-                return true
-            end
-        end
+        preferedFueltype = true
     end
     return false
 end
