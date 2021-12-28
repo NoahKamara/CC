@@ -195,7 +195,7 @@ end
 
 basics.turnLeft()
 
-if turtle_nummer == 1 then
+if turtle_nummer == anzahl_turtle then
     ernte_mine.ernte(schaechte, y_koordinate, versch)
 else
     basics.turnLeft()
