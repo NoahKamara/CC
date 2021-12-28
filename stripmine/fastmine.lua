@@ -15,6 +15,7 @@ local function place_chest_and_fill()
     basics.walkUp()
     turtle.dig()
     basics.walkDown()
+    turtle.select(2)
     turtle.place()
     for i = 1, 16 do
         turtle.select(i)

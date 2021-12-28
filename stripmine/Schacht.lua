@@ -23,7 +23,7 @@ local function check_ore(success, data)
 end
 
 local function detect_ore_and_dig(direction)
-    if direction == "up" then
+    if direction == "down" then
         -- Detect / Dig Down
         local success, data = turtle.inspectDown()
         if check_ore(success, data) then turtle.digDown() end
